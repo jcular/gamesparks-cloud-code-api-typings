@@ -29,7 +29,7 @@ interface SparkMongoCursor {
      * Sorts this cursor's elements. This method must be called before getting any object from the cursor.
      * @example var cursor = collection.find( query ).sort( {"field" : 1} ).limit( 100 )
      */
-    sort(orderBy: any): SparkMongoCursor
+    sort(orderBy: JSON): SparkMongoCursor
     /**
      * Checks if there is another object available.
      * @example var cursor = collection.find( query ); if( cursor.hasNext() ) {var obj = cursor.next();}
@@ -40,11 +40,11 @@ interface SparkMongoCursor {
      * @returns a JSON object
      * @example var cursor = collection.find( query ); if( cursor.hasNext() ) {var obj = cursor.next();}
      */
-    next(): any
+    next(): JSON
     /**
      * Returns the element the cursor is at.
      * @returns a JSON object
      * @example var cursor = collection.find( query ); if( cursor.hasNext() ) {cursor.next(); var obj = cursor.curr();}
      */
-    curr(): any
+    curr(): JSON
 }

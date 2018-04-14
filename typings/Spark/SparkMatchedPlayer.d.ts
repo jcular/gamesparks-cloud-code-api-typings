@@ -5,11 +5,11 @@ interface SparkMatchedPlayer {
     /**
      * The Location of the player
      */
-    getLocation(): any
+    getLocation(): JSON
     /**
      * A JSON Map of any data that was associated to this user
      */
-    getParticipantData(): any
+    getParticipantData(): JSON
     /**
      * The ID for player
      */

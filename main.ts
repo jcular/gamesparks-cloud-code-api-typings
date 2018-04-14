@@ -7,11 +7,6 @@ let outPath = "./typings/";
 let baseUrl = "https://docs.gamesparks.com";
 let baseHref = "/api-documentation/cloud-code-api/";
 let baseMenuTitle = "Cloud Code API";
-let typeConverts: { from: string, to: string, }[] =
-	[
-		{ from: "JSON", to: "any" },
-		{ from: "JSON[]", to: "any[]" },
-	];
 
 interface IClassInfo {
 	name: string,
@@ -96,7 +91,7 @@ async function main() {
 					let pars = parsStr.split(", ");
 					for (let k = 0; k < pars.length; k++) {
 						let temp = pars[k].split(" ");
-						pars[k] = temp[1] + ": " + convertType(temp[0]);
+						pars[k] = temp[1] + ": " + temp[0];
 					}
 					signature = signature.split("(")[0] + "(" + pars.join(", ") + ")";
 				}
@@ -117,7 +112,7 @@ async function main() {
 			// returns
 			if (childNode.childNodes.length > 0 && childNode.childNodes[0].localName as string == "em" && childNode.childNodes[0].textContent == "returns") {
 				let returns = childNode.textContent.replace("returns ", "");
-				lastSignature.returns = convertType(returns);
+				lastSignature.returns = returns;
 				continue;
 			}
 			// deprecated
@@ -225,15 +220,6 @@ function handleData(data: IClassInfo) {
 	let path = outPath + (data.folder ? data.folder + "/" : "") + data.name + ".d.ts";
 	console.log(path);
 	fs.writeFileSync(path, dts);
-}
-function convertType(t: string): string {
-	for (let i = 0; i < typeConverts.length; i++) {
-		let convert = typeConverts[i];
-		if (t == convert.from) {
-			return convert.to;
-		}
-	}
-	return t;
 }
 function createDes(dess: string[], level: number) {
 	if (dess.length == 0) {

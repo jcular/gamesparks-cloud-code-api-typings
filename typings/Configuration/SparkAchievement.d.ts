@@ -52,7 +52,7 @@ interface SparkAchievement {
      * Returns the property set associated with the achievement
      * @validity All Scripts
      */
-    getPropertySet(): any
+    getPropertySet(): JSON
     /**
      * Returns the virtual good award of the achievement
      * @validity All Scripts
@@ -62,5 +62,5 @@ interface SparkAchievement {
      * Returns the currency awards map associated with this achievement
      * @validity All Scripts
      */
-    getCurrencyAwards(): any
+    getCurrencyAwards(): JSON
 }

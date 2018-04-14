@@ -52,5 +52,5 @@ interface PendingMatch {
      * @validity All Scripts
      * @example pendingMatch.getMatchData();
      */
-    getMatchData(): any
+    getMatchData(): JSON
 }

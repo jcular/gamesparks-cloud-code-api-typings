@@ -73,5 +73,5 @@ interface SparkMatchConfig {
      * Any existing pending matches for these players with the same matchGroup will be cancelled.
      * @validity All Scripts
      */
-    createPendingMatchWithCustomQuery(matchGroup: string, skill: number, customQuery: any, matchData: any, players: SparkPlayer[]): PendingMatch
+    createPendingMatchWithCustomQuery(matchGroup: string, skill: number, customQuery: JSON, matchData: JSON, players: SparkPlayer[]): PendingMatch
 }

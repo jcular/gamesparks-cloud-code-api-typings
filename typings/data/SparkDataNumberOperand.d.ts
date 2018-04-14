@@ -5,15 +5,15 @@ interface SparkDataNumberOperand {
     /**
      * Between values
      */
-    between(low: any, high: any): SparkDataCondition
+    between(low: JSON, high: JSON): SparkDataCondition
     /**
      * Equal to
      */
-    eq(value: any): SparkDataCondition
+    eq(value: JSON): SparkDataCondition
     /**
      * Greater than
      */
-    gt(value: any): SparkDataCondition
+    gt(value: JSON): SparkDataCondition
     /**
      * Equal to any item in the supplied values
      */
@@ -21,9 +21,9 @@ interface SparkDataNumberOperand {
     /**
      * Less than
      */
-    lt(value: any): SparkDataCondition
+    lt(value: JSON): SparkDataCondition
     /**
      * Not equal to
      */
-    ne(value: any): SparkDataCondition
+    ne(value: JSON): SparkDataCondition
 }

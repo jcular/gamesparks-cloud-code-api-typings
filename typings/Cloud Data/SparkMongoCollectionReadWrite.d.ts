@@ -16,14 +16,14 @@ interface SparkMongoCollectionReadWrite {
      * @returns the number of documents
      * @example var count = Spark.metaCollection('metatest').count({"metafield" : "metavalue"});
      */
-    count(query: any): number
+    count(query: JSON): number
     /**
      * Returns a list of distinct values for the given key in the collection
      * @param key the key to use in the query
      * @returns an object array
      * @example var keys = Spark.metaCollection('metatest').distinct("metafield");
      */
-    distinct(key: string): any
+    distinct(key: string): JSON
     /**
      * Returns a list of distinct values for the given key in the collection that match the supplied query
      * @param key the key to use in the query
@@ -31,13 +31,13 @@ interface SparkMongoCollectionReadWrite {
      * @returns an object array
      * @example var keys = Spark.metaCollection('metatest').distinct("metafield", {"metafield1":{"$gte" : 5}});
      */
-    distinct(key: string, query: any): any
+    distinct(key: string, query: JSON): JSON
     /**
      * Drops or removes the specified index from a collection.
      * @param keys the index definition used in ensureIndex.
      * @example Spark.metaCollection('metatest').dropIndex({"metafield" : 1});
      */
-    dropIndex(keys: any): void
+    dropIndex(keys: JSON): void
     /**
      * Drops or removes the specified index from a collection.
      * @param name the name of the index to drop.
@@ -49,14 +49,14 @@ interface SparkMongoCollectionReadWrite {
      * @param keys the index definition used in ensureIndex.
      * @example Spark.metaCollection('metatest').ensureIndex({"metafield" : 1, "metafield1" : 1});
      */
-    ensureIndex(keys: any): void
+    ensureIndex(keys: JSON): void
     /**
      * Creates an index on the specified fields if the index does not already exist.
      * @param keys the index definition used in ensureIndex.
      * @param optionsIN index options
      * @example Spark.metaCollection('metatest').ensureIndex({"metafield" : 1, "metafield1" : 1}, {"name":"myIndex"});
      */
-    ensureIndex(keys: any, optionsIN: any): void
+    ensureIndex(keys: JSON, optionsIN: JSON): void
     /**
      * Returns a SparkMongoCursor of all documents in this collection
      * @example var results = Spark.metaCollection('metatest').find();
@@ -67,7 +67,7 @@ interface SparkMongoCollectionReadWrite {
      * @param query a Mongo query
      * @example var results = Spark.metaCollection('metatest').find({"metatest1" : {"$gt" : 1}});
      */
-    find(query: any): SparkMongoCursor
+    find(query: JSON): SparkMongoCursor
     /**
      * Returns a SparkMongoCursor of all documents in this collection that match the supplied query.
      * The returned documents only contain the fields supplied in the fieldsToReturn parameter. This reduces the document size when being returned.
@@ -75,20 +75,20 @@ interface SparkMongoCollectionReadWrite {
      * @param fields the fields to return
      * @example var results = Spark.metaCollection('metatest').find({"metatest1" : {"$gt" : 1}}, {"metatest" : 1});
      */
-    find(query: any, fields: any): SparkMongoCursor
+    find(query: JSON, fields: JSON): SparkMongoCursor
     /**
      * Returns the first document from the collection according to natural order (which reflects the order of documents on the disk)
      * @returns A JSON object
      * @example var results = Spark.metaCollection('metatest').findOne();
      */
-    findOne(): any
+    findOne(): JSON
     /**
      * Returns one document that satisfies the specified query criteria.
      * If multiple documents satisfy the query, this method returns the first document according to the natural order which reflects the order of documents on the disk.
      * @param query a Mongo query
      * @example var result = Spark.metaCollection('metatest').findOne({"metatest1" : {"$gt" : 1}}
      */
-    findOne(query: any): any
+    findOne(query: JSON): JSON
     /**
      * Returns one document that satisfies the specified query criteria.
      * If multiple documents satisfy the query, this method returns the first document according to the natural order which reflects the order of documents on the disk.
@@ -97,7 +97,7 @@ interface SparkMongoCollectionReadWrite {
      * @param fields the fields to return
      * @example var result = Spark.metaCollection('metatest').findOne({"metatest1" : {"$gt" : 1}}, {"metatest" : 1});
      */
-    findOne(query: any, fields: any): any
+    findOne(query: JSON, fields: JSON): JSON
     /**
      * Returns one document that satisfies the specified query criteria.
      * If multiple documents satisfy the query, this method returns the first document according to the natural order which reflects the order of documents on the disk.
@@ -107,7 +107,7 @@ interface SparkMongoCollectionReadWrite {
      * @param orderBy the order clause
      * @example var result = Spark.metaCollection('metatest').findOne({"metatest1" : {"$gt" : 1}}, {"metatest" : 1});
      */
-    findOne(query: any, fields: any, orderBy: any): any
+    findOne(query: JSON, fields: JSON, orderBy: JSON): JSON
     /**
      * Calls findAndModify(query, fields, sort, remove, update, returnNew, upsert) with fields=null, remove=false, returnNew=false, upsert=false, sort=null
      * @param query Specifies the selection criteria for the modification. The query field employs the same query selectors as used in the find() method. Although the query may match multiple documents, findAndModify will only select one document to modify.
@@ -115,7 +115,7 @@ interface SparkMongoCollectionReadWrite {
      * @returns a JSON object
      * @example var doc = myRuntimeCollection.findAndModify({"field" : "value"}, {"field" : 1}, {"field" : "value1"});
      */
-    findAndModify(query: any, update: any): any
+    findAndModify(query: JSON, update: JSON): JSON
     /**
      * Calls findAndModify(query, fields, sort, remove, update, returnNew, upsert) with fields=null, remove=false, returnNew=false, upsert=false
      * @param query Specifies the selection criteria for the modification. The query field employs the same query selectors as used in the find() method. Although the query may match multiple documents, findAndModify will only select one document to modify.
@@ -124,7 +124,7 @@ interface SparkMongoCollectionReadWrite {
      * @returns a JSON object
      * @example var doc = myRuntimeCollection.findAndModify({"field" : "value"},{"field" : 1}, {"field" : "value1"});
      */
-    findAndModify(query: any, sort: any, update: any): any
+    findAndModify(query: JSON, sort: JSON, update: JSON): JSON
     /**
      * Atomically modifies and returns a single document. By default, the returned document does not include the modifications made on the update. To return the document with the modifications made on the update, use the returnNew option.
      * @param query specifies the selection criteria for the modification. The query field employs the same query selectors as used in the find() method. Although the query may match multiple documents, findAndModify will only select one document to modify.
@@ -137,22 +137,22 @@ interface SparkMongoCollectionReadWrite {
      * @returns a JSON object
      * @example var doc = myRuntimeCollection.findAndModify({"field" : "value"},{"field" : 1},false,{"field" : "value1"},true, {"field" : 1},false);
      */
-    findAndModify(query: any, fields: any, sort: any, remove: boolean, update: any, returnNew: boolean, upsert: boolean): any
+    findAndModify(query: JSON, fields: JSON, sort: JSON, remove: boolean, update: JSON, returnNew: boolean, upsert: boolean): JSON
     /**
      * Calls findAndModify(query, fields, sort, remove, update, returnNew, upsert) with  fields=null, sort=null, remove=true, returnNew=false, upsert=false
      * @param query a Mongo query
      * @returns a JSON object
      * @example var doc = myRuntimeCollection.findAndRemove({"field" : "value"});
      */
-    findAndRemove(query: any): any
+    findAndRemove(query: JSON): JSON
     /**
      * Inserts a document or documents into a collection.
      * @param documents A document or array of documents to insert into the collection.
      * @returns true if the operation was successful
      * @example var success = myRuntimeCollection.insert({"field" : "value"}, {"field" : "value1"}, {"field" : "value2"});
      */
-    insert(documents: any[]): boolean
-    aggregate(firstOp: any, additionalOps: any[]): any
+    insert(documents: JSON[]): boolean
+    aggregate(firstOp: JSON, additionalOps: JSON[]): JSON
     /**
      * Generates the correct mongo update command to set and unset fields so the mongo record matches the newDocument.
      * This can greatly increase performance in documents where only a small amount of change has been made as only the required fields are modified.
@@ -161,19 +161,19 @@ interface SparkMongoCollectionReadWrite {
      * @param newDocument The new state to persist in the database, and _id field in this document will be ignored.
      * @returns true if the operation was successful
      */
-    applyChanges(existingDocument: any, newDocument: any): boolean
+    applyChanges(existingDocument: JSON, newDocument: JSON): boolean
     /**
      * Return a list of the indexes for this collection. Each object in the list is the "info document" from MongoDB
      * @returns list of index documents
      * @example var indexes = Spark.metaCollection('metatest').getIndexInfo();
      */
-    getIndexInfo(): any
+    getIndexInfo(): JSON
     /**
      * Gets the error (if there is one) from the previous operation on this connection.
      * @returns a JSON object with error and status information
      * @example var errors = Spark.metaCollection('metatest').getLastError();
      */
-    getLastError(): any
+    getLastError(): JSON
     /**
      * Updates an existing document or inserts a new document, depending on its document parameter.
      * If the document does not contain an _id field, then the save() method performs an insert. During the operation, mongo will add to the document the _id field and assign it a unique ObjectId.
@@ -181,7 +181,7 @@ interface SparkMongoCollectionReadWrite {
      * @param document the document to save
      * @example var success = myRuntimeCollection.save({"field" : "value"});
      */
-    save(document: any): boolean
+    save(document: JSON): boolean
     /**
      * Removes any document from the collection that matches the supplied query.
      * Return a boolean indicating whether the remove was successful.
@@ -189,7 +189,7 @@ interface SparkMongoCollectionReadWrite {
      * @returns true if the operation was successful
      * @example var success = myRuntimeCollection.remove({"field" : "value"});
      */
-    remove(query: any): boolean
+    remove(query: JSON): boolean
     /**
      * Drop the collection
      * @example myRuntimeCollection.drop();
@@ -202,7 +202,7 @@ interface SparkMongoCollectionReadWrite {
      * @returns true if the operation was successful
      * @example var success = myRuntimeCollection.update({"field" : "value"}, {"field" : "value1"});
      */
-    update(query: any, update: any): boolean
+    update(query: JSON, update: JSON): boolean
     /**
      * Modifies an existing document or documents in a collection. The method can modify specific fields of existing document or documents or replace an existing document entirely, depending on the update parameter.
      * By default, the update() method updates a single document. If the multi option is set to true, the method updates all documents that match the query criteria.
@@ -213,7 +213,7 @@ interface SparkMongoCollectionReadWrite {
      * @returns true if the operation was successful
      * @example var success = myRuntimeCollection.update({"field" : "value"}, {"field" : "value1"}, false, false);
      */
-    update(query: any, update: any, upsert: boolean, multi: boolean): boolean
+    update(query: JSON, update: JSON, upsert: boolean, multi: boolean): boolean
     /**
      * Calls update(query, update, upsert, multi) with upsert=false and multi=true
      * @param query query (document) The selection criteria for the update. Use the same query selectors as used in the find() method
@@ -221,5 +221,5 @@ interface SparkMongoCollectionReadWrite {
      * @returns true if the operation was successful
      * @example var success = myRuntimeCollection.updateMulti({"field" : "value"}, {"field" : "value1"});
      */
-    updateMulti(query: any, update: any): boolean
+    updateMulti(query: JSON, update: JSON): boolean
 }

@@ -9,7 +9,7 @@ interface SparkUploadableUtils {
      * @validity All Scripts
      * @returns The uploadId if the upload was successful, or null otherwise
      */
-    uploadString(stringData: string, player: SparkPlayer, fileName: string, metaData: any): string
+    uploadString(stringData: string, player: SparkPlayer, fileName: string, metaData: JSON): string
     /**
      * Returns a previously uploaded String, or null otherwise
      * @validity All Scripts

@@ -29,7 +29,7 @@ interface SparkMessage {
     /**
      * Sets the data to send.
      */
-    setMessageData(data: any): SparkMessage
+    setMessageData(data: JSON): SparkMessage
     /**
      * Sets the playerId to send the message to.
      */

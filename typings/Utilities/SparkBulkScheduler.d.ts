@@ -13,7 +13,7 @@ interface SparkBulkScheduler {
      * @returns The jobId if the job was accepted, or null
      * @example var jobId = Spark.getBulkScheduler().submitJobModule(query, module, data, delaySeconds);
      */
-    submitJobModule(playerQuery: any, module: string, data: any, delaySeconds: number): string
+    submitJobModule(playerQuery: JSON, module: string, data: JSON, delaySeconds: number): string
     /**
      * Submit a job to be executed by running an ad-hoc script.
      * @validity All Scripts
@@ -24,7 +24,7 @@ interface SparkBulkScheduler {
      * @returns The jobId if the job was accepted, or null
      * @example var jobId = Spark.getBulkScheduler().submitJobScript(query, script, data, delaySeconds);
      */
-    submitJobScript(playerQuery: any, script: string, data: any, delaySeconds: number): string
+    submitJobScript(playerQuery: JSON, script: string, data: JSON, delaySeconds: number): string
     /**
      * Cancel a previously scheduled bulk job.
      * @validity All Scripts

@@ -9,7 +9,7 @@ interface SparkDataItem {
     /**
      * The JSON data of the item
      */
-    getData(): any
+    getData(): JSON
     /**
      * Deletes the item from the DB
      */
@@ -25,7 +25,7 @@ interface SparkDataItem {
     /**
      * The JSON data of the item
      */
-    setData(data: any): SparkDataItem
+    setData(data: JSON): SparkDataItem
     /**
      * The TTL (in milliseconds since the Epoch time) for this item
      */
