@@ -306,7 +306,6 @@ interface Spark {
      * @deprecated use Spark.getFiles().downloadableXml(shortCode)
      * @validity All Scripts
      * @param shortCode the short code for the downloadable file
-     * @returns example
      * @example var reader = Spark.downloadableXml("shortCode");
      */
     downloadableXml(shortCode: string): SparkXmlReader
@@ -315,7 +314,6 @@ interface Spark {
      * @deprecated use Spark.getFiles().downloadableJson(shortCode)
      * @validity All Scripts
      * @param shortCode the short code for the downloadable file
-     * @returns example
      * @example var reader = Spark.downloadableJson("shortCode");
      */
     downloadableJson(shortCode: string): JSON

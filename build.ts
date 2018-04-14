@@ -7,6 +7,9 @@ let outPath = "./typings/";
 let baseUrl = "https://docs.gamesparks.com";
 let baseHref = "/api-documentation/cloud-code-api/";
 let baseMenuTitle = "Cloud Code API";
+let ingnoreDescriptions = [
+	"@returns example",
+];
 
 interface IClassInfo {
 	name: string,
@@ -227,6 +230,7 @@ function createDes(dess: string[], level: number) {
 	}
 	let des = getLevelSpace(level) + "/**\n";
 	for (let i = 0; i < dess.length; i++) {
+		if (ingnoreDescriptions.indexOf(dess[i]) >= 0) continue;
 		des += getLevelSpace(level) + " * " + dess[i] + "\n";
 	}
 	des += getLevelSpace(level) + " */\n"

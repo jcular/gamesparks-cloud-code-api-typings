@@ -28,7 +28,6 @@ interface SparkFiles {
      * Provides access to a downloadable file via a SparkXmlReader interface
      * @validity All Scripts
      * @param shortCode the short code for the downloadable file
-     * @returns example
      * @example var reader = Spark.getFiles().downloadableXml("shortCode");
      */
     downloadableXml(shortCode: string): SparkXmlReader
@@ -36,7 +35,6 @@ interface SparkFiles {
      * Provides access to a downloadable file via a JSON object
      * @validity All Scripts
      * @param shortCode the short code for the downloadable file
-     * @returns example
      * @example var reader = Spark.getFiles().downloadableJson("shortCode");
      */
     downloadableJson(shortCode: string): JSON
