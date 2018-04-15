@@ -24,11 +24,11 @@ interface SparkXmlReader {
      * @returns The current element
      * @example var element = uploadedXml.element;
      */
-    getElement(): JSON
+    getElement(): any
     /**
      * Returns the current element in the document as a complete xml structure including all children
      * @returns The current element as a document
      * @example var element = uploadedXml.xml;
      */
-    getXml(): JSON
+    getXml(): any
 }

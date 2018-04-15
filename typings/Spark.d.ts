@@ -47,7 +47,7 @@ interface Spark {
      * @param players the SparkPlayer array to send the message to.
      * @example Spark.sendMessage({"alert" : "You've just won a car!"}, myplayers);
      */
-    sendMessage(data: JSON, players: SparkPlayer[]): void
+    sendMessage(data: any, players: SparkPlayer[]): void
     /**
      * Sends a ScriptMessage to one or more spark Players.
      * The 'data' attribute of the SparkMessage will match the data parameter supplied.
@@ -59,7 +59,7 @@ interface Spark {
      * @param players the SparkPlayer array to send the message to. If empty or null no message will be sent.
      * @example Spark.sendMessageExt({"alert" : "You've just won a car!"},"CODE1" ,myplayers);
      */
-    sendMessageExt(data: JSON, extCode: string, players: SparkPlayer[]): void
+    sendMessageExt(data: any, extCode: string, players: SparkPlayer[]): void
     /**
      * Sends a ScriptMessage to one or more spark Players. Push notifications will be supressed for this message
      * The 'data' attribute of the SparkMessage will match the data parameter supplied.
@@ -69,7 +69,7 @@ interface Spark {
      * @param players the SparkPlayer array to send the message to.
      * @example Spark.sendMessage({"alert" : "You've just won a car!"}, myplayers);
      */
-    sendMessageWithoutPush(data: JSON, players: SparkPlayer[]): void
+    sendMessageWithoutPush(data: any, players: SparkPlayer[]): void
     /**
      * Sends a ScriptMessage to one or more spark Players.
      * The 'data' attribute of the SparkMessage will match the data parameter supplied.
@@ -79,7 +79,7 @@ interface Spark {
      * @param playerIds An array of player id strings to send the message to.
      * @example Spark.sendMessage({"alert" : "You've just won a car!"}, myplayerids);
      */
-    sendMessageById(data: JSON, playerIds: string[]): void
+    sendMessageById(data: any, playerIds: string[]): void
     /**
      * Sends a ScriptMessage to one or more spark Players.
      * The 'data' attribute of the SparkMessage will match the data parameter supplied.
@@ -91,7 +91,7 @@ interface Spark {
      * @param playerIds An array of player id strings to send the message to.
      * @example Spark.sendMessage({"alert" : "You've just won a car!"}, myplayerids);
      */
-    sendMessageByIdExt(data: JSON, extCode: string, playerIds: string[]): void
+    sendMessageByIdExt(data: any, extCode: string, playerIds: string[]): void
     /**
      * Sends a ScriptMessage to one or more spark Players.
      * The 'data' attribute of the SparkMessage will match the data parameter supplied. Push notifications will be supressed for this message
@@ -101,7 +101,7 @@ interface Spark {
      * @param playerIds An array of player id strings to send the message to.
      * @example Spark.sendMessage({"alert" : "You've just won a car!"}, myplayerids);
      */
-    sendMessageByIdWithoutPush(data: JSON, playerIds: string[]): void
+    sendMessageByIdWithoutPush(data: any, playerIds: string[]): void
     /**
      * Creates a SparkMessage object using the default configuration from the portal.
      * Providing an ext code allows different configurations to be used as th template.
@@ -119,7 +119,7 @@ interface Spark {
      * @returns true if the save was successful, false if there was an error
      * @example Spark.save("myCollection", {"key":"value"});
      */
-    save(collectionName: string, document: JSON): boolean
+    save(collectionName: string, document: any): boolean
     /**
      * Removes a document or documents from the named collection based on the query.
      * @validity All Scripts
@@ -128,7 +128,7 @@ interface Spark {
      * @returns true if the save was successful, false if there was an error
      * @example Spark.remove("myCollection", {"key":"value"});
      */
-    remove(collectionName: string, query: JSON): boolean
+    remove(collectionName: string, query: any): boolean
     /**
      * Performs a query on the named collection using find (without a projection).
      * @validity All Scripts
@@ -137,7 +137,7 @@ interface Spark {
      * @returns The result of the query, can be a simple document or a list
      * @example Spark.find("myCollection", {"key":"value"});
      */
-    find(collectionName: string, query: JSON): JSON
+    find(collectionName: string, query: any): any
     /**
      * Performs a query on the named collection using find (with a projection)
      * @validity All Scripts
@@ -147,7 +147,7 @@ interface Spark {
      * @returns The result of the query, can be a simple document or a list
      * @example Spark.find("myCollection", {"key":"value"}, {"projectionKey":"projectionValue"});
      */
-    find(collectionName: string, query: JSON, projection: JSON): JSON
+    find(collectionName: string, query: any, projection: any): any
     /**
      * Locks a challenge for writing. Whilst the script 'owns' this lock no other script can modify the challenge
      * Useful for situations where there may be concurrent access required to a SparkChallengeObject.
@@ -213,14 +213,14 @@ interface Spark {
      * @param value the data, can be either complex JSON or simple types
      * @example Spark.setScriptError("myerrorkey", {"test":12345});
      */
-    setScriptError(key: string, value: JSON): void
+    setScriptError(key: string, value: any): void
     /**
      * Gets the value of the script error for the given key.  In the case of response scripts this may have been set in the request.
      * @param name The name in the name value pair
      * @returns a JSON object
      * @example var error = Spark.getScriptError("name");
      */
-    getScriptError(key: string): JSON
+    getScriptError(key: string): any
     /**
      * Removes a value from a name value pair structure containing any script errors that have previously been set.
      * @param name The name in the name value pair
@@ -254,7 +254,7 @@ interface Spark {
      * @validity All Scripts
      * @example Spark.logEvent("HS", {"HS":234});
      */
-    logEvent(eventKey: string, values: JSON): void
+    logEvent(eventKey: string, values: any): void
     /**
      * Provides access to a SparkHttp interface
      * @validity All Scripts
@@ -300,7 +300,7 @@ interface Spark {
      * @returns A JSON object
      * @example var reader = Spark.uploadedJson("myUploadId");
      */
-    uploadedJson(uploadId: string): JSON
+    uploadedJson(uploadId: string): any
     /**
      * Provides access to a downloadable file via a SparkXmlReader interface
      * @deprecated use Spark.getFiles().downloadableXml(shortCode)
@@ -316,7 +316,7 @@ interface Spark {
      * @param shortCode the short code for the downloadable file
      * @example var reader = Spark.downloadableJson("shortCode");
      */
-    downloadableJson(shortCode: string): JSON
+    downloadableJson(shortCode: string): any
     /**
      * Send an email via the SendGrid email delivery provider
      * @validity All Scripts
@@ -344,7 +344,7 @@ interface Spark {
      * @param returns The response as would be returned to the client
      * @example Spark.sendRequest({"@class": ".LogEventRequest", "eventKey": "SOT", "SC": "1000"});
      */
-    sendRequest(request: JSON): JSON
+    sendRequest(request: any): any
     /**
      * Sends a Request to the platform, this mimics the process a client uses to send requests
      * The request is sent as the player identified by playerId, if there playerId is invalid the requst will fail.
@@ -352,7 +352,7 @@ interface Spark {
      * @param returns The response as would be returned to the client
      * @example Spark.sendRequestAs({"@class": ".LogEventRequest", "eventKey": "SOT", "SC": "1000"}, "1234567890");
      */
-    sendRequestAs(request: JSON, playerId: string): JSON
+    sendRequestAs(request: any, playerId: string): any
     /**
      * Returns a reference to a SparkRedis object
      * @validity All Scripts
@@ -448,7 +448,7 @@ interface Spark {
      * @returns a JSON object
      * @example var value = Spark.getPlayer().getScriptData("name");
      */
-    getScriptData(name: string): JSON
+    getScriptData(name: string): any
     /**
      * Allows arbitrary data to be added to the object being acted upon.
      * Sets a value into a name value pair structure that allows custom data to be attached to the challenge. This data can either be complex JSON or simple values.
@@ -459,7 +459,7 @@ interface Spark {
      * @param value The value to set in the name value pair
      * @example Spark.getPlayer().setScriptData("name", "value");
      */
-    setScriptData(name: string, value: JSON): void
+    setScriptData(name: string, value: any): void
     /**
      * Removes a value from a name value pair structure that allows custom data to be attached to the challenge. This data can either be complex JSON or simple values.
      * @param name The name in the name value pair
@@ -481,5 +481,5 @@ interface Spark {
      * @validity All Scripts
      * @example var userName = Spark.getData().userName;
      */
-    getData(): JSON
+    getData(): any
 }

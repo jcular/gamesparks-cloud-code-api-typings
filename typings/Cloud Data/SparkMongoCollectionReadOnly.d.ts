@@ -15,14 +15,14 @@ interface SparkMongoCollectionReadOnly {
      * @returns the number of documents
      * @example var count = Spark.metaCollection('metatest').count({"metafield" : "metavalue"});
      */
-    count(query: JSON): number
+    count(query: any): number
     /**
      * Returns a list of distinct values for the given key in the collection
      * @param key the key to use in the query
      * @returns an object array
      * @example var keys = Spark.metaCollection('metatest').distinct("metafield");
      */
-    distinct(key: string): JSON
+    distinct(key: string): any
     /**
      * Returns a list of distinct values for the given key in the collection that match the supplied query
      * @param key the key to use in the query
@@ -30,13 +30,13 @@ interface SparkMongoCollectionReadOnly {
      * @returns an object array
      * @example var keys = Spark.metaCollection('metatest').distinct("metafield", {"metafield1":{"$gte" : 5}});
      */
-    distinct(key: string, query: JSON): JSON
+    distinct(key: string, query: any): any
     /**
      * Drops or removes the specified index from a collection.
      * @param keys the index definition used in ensureIndex.
      * @example Spark.metaCollection('metatest').dropIndex({"metafield" : 1});
      */
-    dropIndex(keys: JSON): void
+    dropIndex(keys: any): void
     /**
      * Drops or removes the specified index from a collection.
      * @param name the name of the index to drop.
@@ -48,14 +48,14 @@ interface SparkMongoCollectionReadOnly {
      * @param keys the index definition used in ensureIndex.
      * @example Spark.metaCollection('metatest').ensureIndex({"metafield" : 1, "metafield1" : 1});
      */
-    ensureIndex(keys: JSON): void
+    ensureIndex(keys: any): void
     /**
      * Creates an index on the specified fields if the index does not already exist.
      * @param keys the index definition used in ensureIndex.
      * @param optionsIN index options
      * @example Spark.metaCollection('metatest').ensureIndex({"metafield" : 1, "metafield1" : 1}, {"name":"myIndex"});
      */
-    ensureIndex(keys: JSON, optionsIN: JSON): void
+    ensureIndex(keys: any, optionsIN: any): void
     /**
      * Returns a SparkMongoCursor of all documents in this collection
      * @example var results = Spark.metaCollection('metatest').find();
@@ -66,7 +66,7 @@ interface SparkMongoCollectionReadOnly {
      * @param query a Mongo query
      * @example var results = Spark.metaCollection('metatest').find({"metatest1" : {"$gt" : 1}});
      */
-    find(query: JSON): SparkMongoCursor
+    find(query: any): SparkMongoCursor
     /**
      * Returns a SparkMongoCursor of all documents in this collection that match the supplied query.
      * The returned documents only contain the fields supplied in the fieldsToReturn parameter. This reduces the document size when being returned.
@@ -74,20 +74,20 @@ interface SparkMongoCollectionReadOnly {
      * @param fields the fields to return
      * @example var results = Spark.metaCollection('metatest').find({"metatest1" : {"$gt" : 1}}, {"metatest" : 1});
      */
-    find(query: JSON, fields: JSON): SparkMongoCursor
+    find(query: any, fields: any): SparkMongoCursor
     /**
      * Returns the first document from the collection according to natural order (which reflects the order of documents on the disk)
      * @returns A JSON object
      * @example var results = Spark.metaCollection('metatest').findOne();
      */
-    findOne(): JSON
+    findOne(): any
     /**
      * Returns one document that satisfies the specified query criteria.
      * If multiple documents satisfy the query, this method returns the first document according to the natural order which reflects the order of documents on the disk.
      * @param query a Mongo query
      * @example var result = Spark.metaCollection('metatest').findOne({"metatest1" : {"$gt" : 1}}
      */
-    findOne(query: JSON): JSON
+    findOne(query: any): any
     /**
      * Returns one document that satisfies the specified query criteria.
      * If multiple documents satisfy the query, this method returns the first document according to the natural order which reflects the order of documents on the disk.
@@ -96,7 +96,7 @@ interface SparkMongoCollectionReadOnly {
      * @param fields the fields to return
      * @example var result = Spark.metaCollection('metatest').findOne({"metatest1" : {"$gt" : 1}}, {"metatest" : 1});
      */
-    findOne(query: JSON, fields: JSON): JSON
+    findOne(query: any, fields: any): any
     /**
      * Returns one document that satisfies the specified query criteria.
      * If multiple documents satisfy the query, this method returns the first document according to the natural order which reflects the order of documents on the disk.
@@ -106,18 +106,18 @@ interface SparkMongoCollectionReadOnly {
      * @param orderBy the order clause
      * @example var result = Spark.metaCollection('metatest').findOne({"metatest1" : {"$gt" : 1}}, {"metatest" : 1});
      */
-    findOne(query: JSON, fields: JSON, orderBy: JSON): JSON
-    aggregate(firstOp: JSON, additionalOps: JSON[]): JSON
+    findOne(query: any, fields: any, orderBy: any): any
+    aggregate(firstOp: any, additionalOps: any[]): any
     /**
      * Return a list of the indexes for this collection. Each object in the list is the "info document" from MongoDB
      * @returns list of index documents
      * @example var indexes = Spark.metaCollection('metatest').getIndexInfo();
      */
-    getIndexInfo(): JSON
+    getIndexInfo(): any
     /**
      * Gets the error (if there is one) from the previous operation on this connection.
      * @returns a JSON object with error and status information
      * @example var errors = Spark.metaCollection('metatest').getLastError();
      */
-    getLastError(): JSON
+    getLastError(): any
 }

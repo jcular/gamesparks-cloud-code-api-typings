@@ -34,5 +34,5 @@ interface SparkLeaderboardEntry {
      * @param name the name of the attribute to be returned
      * @example var score = entry.getAttribute("SCORE");
      */
-    getAttribute(name: string): JSON
+    getAttribute(name: string): any
 }

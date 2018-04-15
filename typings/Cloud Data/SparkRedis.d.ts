@@ -52,7 +52,7 @@ interface SparkRedis {
     /**
      * See http://redis.io/commands/geoadd
      */
-    geoadd(dstkey: string, memberCoordinateMap: JSON): number
+    geoadd(dstkey: string, memberCoordinateMap: any): number
     /**
      * See http://redis.io/commands/geodist
      */
@@ -60,19 +60,19 @@ interface SparkRedis {
     /**
      * See http://redis.io/commands/geohash
      */
-    geohash(dstkey: string, members: string[]): JSON
+    geohash(dstkey: string, members: string[]): any
     /**
      * See http://redis.io/commands/geopos
      */
-    geopos(dstkey: string, members: string[]): JSON
+    geopos(dstkey: string, members: string[]): any
     /**
      * See http://redis.io/commands/georadius
      */
-    georadius(dstkey: string, longitude: number, latitude: number, radius: number, unit: string, params: JSON): JSON
+    georadius(dstkey: string, longitude: number, latitude: number, radius: number, unit: string, params: any): any
     /**
      * See http://redis.io/commands/georadiusbymember
      */
-    georadiusbymember(dstkey: string, member: string, radius: number, unit: string, params: JSON): JSON
+    georadiusbymember(dstkey: string, member: string, radius: number, unit: string, params: any): any
     /**
      * See http://redis.io/commands/get
      */
@@ -124,7 +124,7 @@ interface SparkRedis {
     /**
      * See http://redis.io/commands/hmset
      */
-    hmset(key: string, hash: JSON): string
+    hmset(key: string, hash: any): string
     /**
      * See http://redis.io/commands/hset
      */
@@ -416,23 +416,23 @@ interface SparkRedis {
     /**
      * See http://redis.io/commands/zrangeByScoreWithScores
      */
-    zrangeByScoreWithScores(key: string, min: number, max: number, offset: number, count: number): JSON
+    zrangeByScoreWithScores(key: string, min: number, max: number, offset: number, count: number): any
     /**
      * See http://redis.io/commands/zrangeByScoreWithScores
      */
-    zrangeByScoreWithScores(key: string, min: string, max: string): JSON
+    zrangeByScoreWithScores(key: string, min: string, max: string): any
     /**
      * See http://redis.io/commands/zrangeByScoreWithScores
      */
-    zrangeByScoreWithScores(key: string, min: number, max: number): JSON
+    zrangeByScoreWithScores(key: string, min: number, max: number): any
     /**
      * See http://redis.io/commands/zrangeByScoreWithScores
      */
-    zrangeByScoreWithScores(key: string, min: string, max: string, offset: number, count: number): JSON
+    zrangeByScoreWithScores(key: string, min: string, max: string, offset: number, count: number): any
     /**
      * See http://redis.io/commands/zrangeWithScores
      */
-    zrangeWithScores(key: string, start: number, end: number): JSON
+    zrangeWithScores(key: string, start: number, end: number): any
     /**
      * See http://redis.io/commands/zrank
      */
@@ -476,23 +476,23 @@ interface SparkRedis {
     /**
      * See http://redis.io/commands/zrevrangeByScoreWithScores
      */
-    zrevrangeByScoreWithScores(key: string, max: string, min: string): JSON
+    zrevrangeByScoreWithScores(key: string, max: string, min: string): any
     /**
      * See http://redis.io/commands/zrevrangeByScoreWithScores
      */
-    zrevrangeByScoreWithScores(key: string, max: string, min: string, offset: number, count: number): JSON
+    zrevrangeByScoreWithScores(key: string, max: string, min: string, offset: number, count: number): any
     /**
      * See http://redis.io/commands/zrevrangeByScoreWithScores
      */
-    zrevrangeByScoreWithScores(key: string, max: number, min: number): JSON
+    zrevrangeByScoreWithScores(key: string, max: number, min: number): any
     /**
      * See http://redis.io/commands/zrevrangeByScoreWithScores
      */
-    zrevrangeByScoreWithScores(key: string, max: number, min: number, offset: number, count: number): JSON
+    zrevrangeByScoreWithScores(key: string, max: number, min: number, offset: number, count: number): any
     /**
      * See http://redis.io/commands/zrevrangeWithScores
      */
-    zrevrangeWithScores(key: string, start: number, end: number): JSON
+    zrevrangeWithScores(key: string, start: number, end: number): any
     /**
      * See http://redis.io/commands/zrevrank
      */

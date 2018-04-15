@@ -16,7 +16,7 @@ interface SparkHttp {
      * @param headers A JSON object
      * @example Spark.getHttp(url).setHeaders({"X-Custom-header":"1234"});
      */
-    setHeaders(headers: JSON): SparkHttp
+    setHeaders(headers: any): SparkHttp
     /**
      * Perform a HTTP GET request
      * @example var response = Spark.getHttp(url).get();
@@ -27,7 +27,7 @@ interface SparkHttp {
      * @param form the HTTP form data
      * @example Spark.getHttp(url).postForm(form);
      */
-    postForm(form: JSON): SparkHttpResponse
+    postForm(form: any): SparkHttpResponse
     /**
      * Perform a HTTP POST using an XML form object
      * @param form the HTTP form data
@@ -39,7 +39,7 @@ interface SparkHttp {
      * @param form the HTTP form data
      * @example Spark.getHttp(url).postJson(jsonForm);
      */
-    postJson(form: JSON): SparkHttpResponse
+    postJson(form: any): SparkHttpResponse
     /**
      * Perform a HTTP POST using a string
      * @param data the HTTP POST data
@@ -51,7 +51,7 @@ interface SparkHttp {
      * @param form the HTTP form data
      * @example Spark.getHttp(url).putForm(form);
      */
-    putForm(form: JSON): SparkHttpResponse
+    putForm(form: any): SparkHttpResponse
     /**
      * Perform a HTTP PUT using an XML form object
      * @param form the HTTP form data
@@ -63,7 +63,7 @@ interface SparkHttp {
      * @param form the HTTP form data
      * @example Spark.getHttp(url).putJson(jsonForm);
      */
-    putJson(form: JSON): SparkHttpResponse
+    putJson(form: any): SparkHttpResponse
     /**
      * Perform a HTTP PUT using a string
      * @param data the HTTP PUT data

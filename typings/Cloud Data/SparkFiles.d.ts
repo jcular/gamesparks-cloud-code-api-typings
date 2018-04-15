@@ -23,7 +23,7 @@ interface SparkFiles {
      * @returns A JSON object
      * @example var reader = Spark.getFiles().uploadedJson("myUploadId");
      */
-    uploadedJson(uploadId: string): JSON
+    uploadedJson(uploadId: string): any
     /**
      * Provides access to a downloadable file via a SparkXmlReader interface
      * @validity All Scripts
@@ -37,5 +37,5 @@ interface SparkFiles {
      * @param shortCode the short code for the downloadable file
      * @example var reader = Spark.getFiles().downloadableJson("shortCode");
      */
-    downloadableJson(shortCode: string): JSON
+    downloadableJson(shortCode: string): any
 }

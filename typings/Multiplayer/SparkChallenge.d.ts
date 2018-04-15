@@ -112,7 +112,7 @@ interface SparkChallenge {
      * @returns a JSON object
      * @example var privateData = Spark.getChallenge().getPrivateData("name");
      */
-    getPrivateData(name: string): JSON
+    getPrivateData(name: string): any
     /**
      * Allows arbitrary data to be added to the object being acted upon.
      * Sets a value into a name value pair structure that allows custom data to be attached to this object. This data can either be complex JSON or simple values.
@@ -121,7 +121,7 @@ interface SparkChallenge {
      * @param value The value to set in the name value pair
      * @example Spark.getChallenge().setPrivateData("name", "value");
      */
-    setPrivateData(name: string, value: JSON): void
+    setPrivateData(name: string, value: any): void
     /**
      * Removes a value from a name value pair structure that allows custom data to be attached to this. This data can either be complex JSON or simple values.
      * @param name The name in the name value pair
@@ -134,7 +134,7 @@ interface SparkChallenge {
      * @returns a JSON object
      * @example var value = Spark.getPlayer().getScriptData("name");
      */
-    getScriptData(name: string): JSON
+    getScriptData(name: string): any
     /**
      * Allows arbitrary data to be added to the object being acted upon.
      * Sets a value into a name value pair structure that allows custom data to be attached to the challenge. This data can either be complex JSON or simple values.
@@ -145,7 +145,7 @@ interface SparkChallenge {
      * @param value The value to set in the name value pair
      * @example Spark.getPlayer().setScriptData("name", "value");
      */
-    setScriptData(name: string, value: JSON): void
+    setScriptData(name: string, value: any): void
     /**
      * Removes a value from a name value pair structure that allows custom data to be attached to the challenge. This data can either be complex JSON or simple values.
      * @param name The name in the name value pair

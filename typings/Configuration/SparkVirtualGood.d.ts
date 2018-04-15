@@ -102,7 +102,7 @@ interface SparkVirtualGood {
      * Returns the bundled goods of the virtual good
      * @validity All Scripts
      */
-    getBundledGoods(): JSON
+    getBundledGoods(): any
     /**
      * Returns whether this VirtualGood is hidden
      * @validity All Scripts
@@ -112,10 +112,10 @@ interface SparkVirtualGood {
      * Returns the property set associated with this virtual good
      * @validity All Scripts
      */
-    getPropertySet(): JSON
+    getPropertySet(): any
     /**
      * Returns the currency cost map associated with this virtual good
      * @validity All Scripts
      */
-    getCurrencyCosts(): JSON
+    getCurrencyCosts(): any
 }

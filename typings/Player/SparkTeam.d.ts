@@ -65,7 +65,7 @@ interface SparkTeam {
      * Get a message from the chat history by its id.
      * @example var message = Spark.getTeams().getTeam(myTeamId).getChatMessage(chatMessageId);
      */
-    getChatMessage(chatMessageId: string): JSON
+    getChatMessage(chatMessageId: string): any
     /**
      * Delete a message from the chat history by its id.
      * Returns true if the message has been removed from the chat history.

@@ -10,7 +10,7 @@ interface SparkPlayer {
      * Returns a map of the player's balance for each currency type.
      * @example var allBalances = Spark.getPlayer().getAllCurrencies();
      */
-    getAllBalances(): JSON
+    getAllBalances(): any
     /**
      * Gets the display name of the player.
      * This may be null for a player who has only used device authentication. Other authentication mechanisms will return a value.
@@ -344,12 +344,12 @@ interface SparkPlayer {
      * @param Map keys: 'FB' Indicates the ID is a facebook id
      * @example var externalIds = Spark.getPlayer().getExternalIds();
      */
-    getExternalIds(): JSON
+    getExternalIds(): any
     /**
      * Returns an array of the player's social friend ids.
      * @example var friends = Spark.getPlayer().getFriendIds();
      */
-    getFriendIds(): JSON
+    getFriendIds(): any
     /**
      * Returns true if this player is currently has an open WebSocket.
      * @example var online = Spark.getPlayer().isOnline();
@@ -407,7 +407,7 @@ interface SparkPlayer {
      * Gets all segment values from the player.
      * @example var segments = Spark.getPlayer().getSegments();
      */
-    getSegments(): JSON
+    getSegments(): any
     /**
      * Disconnects this player, a SessionTerminatedMessage will be sent to the socket, and the socket will be unauthenticated
      * @param excludeCurrent If the script is running in the context of the user being disconnected, the current socket will not be disconnected
@@ -423,7 +423,7 @@ interface SparkPlayer {
      * Gets all virtual goods from the player.
      * @example var goods = Spark.getPlayer().getVirtualGoods();
      */
-    getVirtualGoods(): JSON
+    getVirtualGoods(): any
     /**
      * Removes all auth tokens for this user, this will force a re-authentication.
      * @example Spark.getPlayer().resetAuthTokens();
@@ -490,7 +490,7 @@ interface SparkPlayer {
      * @returns a JSON object
      * @example var privateData = Spark.getChallenge().getPrivateData("name");
      */
-    getPrivateData(name: string): JSON
+    getPrivateData(name: string): any
     /**
      * Allows arbitrary data to be added to the object being acted upon.
      * Sets a value into a name value pair structure that allows custom data to be attached to this object. This data can either be complex JSON or simple values.
@@ -499,7 +499,7 @@ interface SparkPlayer {
      * @param value The value to set in the name value pair
      * @example Spark.getChallenge().setPrivateData("name", "value");
      */
-    setPrivateData(name: string, value: JSON): void
+    setPrivateData(name: string, value: any): void
     /**
      * Removes a value from a name value pair structure that allows custom data to be attached to this. This data can either be complex JSON or simple values.
      * @param name The name in the name value pair
@@ -512,7 +512,7 @@ interface SparkPlayer {
      * @returns a JSON object
      * @example var value = Spark.getPlayer().getScriptData("name");
      */
-    getScriptData(name: string): JSON
+    getScriptData(name: string): any
     /**
      * Allows arbitrary data to be added to the object being acted upon.
      * Sets a value into a name value pair structure that allows custom data to be attached to the challenge. This data can either be complex JSON or simple values.
@@ -523,7 +523,7 @@ interface SparkPlayer {
      * @param value The value to set in the name value pair
      * @example Spark.getPlayer().setScriptData("name", "value");
      */
-    setScriptData(name: string, value: JSON): void
+    setScriptData(name: string, value: any): void
     /**
      * Removes a value from a name value pair structure that allows custom data to be attached to the challenge. This data can either be complex JSON or simple values.
      * @param name The name in the name value pair

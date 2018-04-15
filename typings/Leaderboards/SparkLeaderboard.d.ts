@@ -72,7 +72,7 @@ interface SparkLeaderboard {
      * If the customIdFilter is null, the method returns all the entries in the leaderboard for the suplied identifier
      * @example leaderboard.getEntriesForIdentifier(myPlayerId, {});
      */
-    getEntriesForIdentifier(identifier: string, customIdFilter: JSON): SparkLeaderboardEntry[]
+    getEntriesForIdentifier(identifier: string, customIdFilter: any): SparkLeaderboardEntry[]
     /**
      * Returns a cursor over the leaderboard entries starting from the highest score of the supplied playerId
      * @example leaderboard.getEntriesFromPlayer(myPlayerId, 50);
@@ -83,7 +83,7 @@ interface SparkLeaderboard {
      * If the customId filter is not an object with valid ID fields, it will return an empty cursor
      * @example leaderboard.getEntriesFromPlayerForCustomId(myPlayerId, 50, {carType:"raceCar"});
      */
-    getEntriesFromPlayerForCustomId(playerId: string, count: number, customIdFilter: JSON): SparkLeaderboardCursor
+    getEntriesFromPlayerForCustomId(playerId: string, count: number, customIdFilter: any): SparkLeaderboardCursor
     /**
      * Returns the list of custom ID fields that are defined on the leaderboard
      * @example leaderboard.getIdFields();
@@ -110,7 +110,7 @@ interface SparkLeaderboard {
      * deleting running totals may affect other leaderbaords using the same running totals
      * @example leaderboard.deleteEntriesForCustomId(myPlayerId, true, {"carType":"raceCar"});
      */
-    deleteEntriesForCustomId(identifier: string, deleteRunningTotals: boolean, customIdFilter: JSON): boolean
+    deleteEntriesForCustomId(identifier: string, deleteRunningTotals: boolean, customIdFilter: any): boolean
     /**
      *  or leaderboard.deleteEntriesForCustomId(identifier, deleteRunningTotals, customIdFilter).
      * Deletes the entry from the leaderboard that correspond to this identifier.
@@ -126,13 +126,13 @@ interface SparkLeaderboard {
      * Returns the property set associated with this leaderboard
      * @validity All Scripts
      */
-    getPropertySet(): JSON
+    getPropertySet(): any
     /**
      * Returns the rank a given score would be at on this Global leaderboard, without it actually being entered into the leaderboard.
      * Calling this on a Team or Social leaderboard will return null.
      * @example var rank = leaderboard.getRankForScore({"score" : 123});
      */
-    getRankForScore(score: JSON): number
+    getRankForScore(score: any): number
     /**
      * Drops the current leaderboard and it rebuilds it from the running totals.
      * The current leaderboard may not have valid ranks for the duration of this process.

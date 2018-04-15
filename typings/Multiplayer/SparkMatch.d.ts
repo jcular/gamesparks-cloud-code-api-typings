@@ -64,7 +64,7 @@ interface SparkMatch {
      * @validity All Scripts
      * @example match.getMatchData();
      */
-    getMatchData(): JSON
+    getMatchData(): any
     /**
      * Whether this match has realtime servers enabled.
      * @validity All Scripts
@@ -76,5 +76,5 @@ interface SparkMatch {
      * @validity All Scripts
      * @example match.setMatchData(matchData);
      */
-    setMatchData(matchData: JSON): void
+    setMatchData(matchData: any): void
 }

@@ -11,25 +11,25 @@ interface SparkLog {
      * @param msg the message to log
      * @example Spark.getLog().debug("Simple string logging");
      */
-    debug(msg: JSON): void
+    debug(msg: any): void
     /**
      * Records value into the spark.log table with the level set to info.
      * @param msg the message to log
      * @example Spark.getLog().info({type:"JSON logging"});
      */
-    info(msg: JSON): void
+    info(msg: any): void
     /**
      * Records value into the spark.log table with the level set to warn.
      * @param msg the message to log
      * @example Spark.getLog().warn({type:"JSON logging"})
      */
-    warn(msg: JSON): void
+    warn(msg: any): void
     /**
      * Records value into the spark.log table with the level set to info.
      * @param msg the message to log
      * @example Spark.getLog().error({type:"JSON logging"})
      */
-    error(msg: JSON): void
+    error(msg: any): void
     /**
      * Returns the currently configured log level.
      * @example Spark.getLog().getLevel()

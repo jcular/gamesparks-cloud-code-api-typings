@@ -24,7 +24,7 @@ interface SparkBulkJob {
     /**
      * Data to be passed into the Module or Script
      */
-    getData(): JSON
+    getData(): any
     /**
      * The number of players processed by the bulk job
      */
@@ -44,7 +44,7 @@ interface SparkBulkJob {
     /**
      * The query to identify players to perform the bulk job on
      */
-    getPlayerQuery(): JSON
+    getPlayerQuery(): any
     /**
      * The time at which the job was scheduled to run
      */

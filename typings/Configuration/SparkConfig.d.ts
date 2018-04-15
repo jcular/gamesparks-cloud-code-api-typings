@@ -16,7 +16,7 @@ interface SparkConfig {
      * Returns a list of the Virtual Goods configured against the game
      * @validity All Scripts
      */
-    getVirtualGoods(): JSON
+    getVirtualGoods(): any
     /**
      * Returns the virtual good with the supplied short code
      * @validity All Scripts
@@ -26,7 +26,7 @@ interface SparkConfig {
      * Returns a list of the Achievements configured against the game
      * @validity All Scripts
      */
-    getAchievements(): JSON
+    getAchievements(): any
     /**
      * Returns the achievement with the supplied short code
      * @validity All Scripts
@@ -36,7 +36,7 @@ interface SparkConfig {
      * Returns a list of the Segments configured against the game
      * @validity All Scripts
      */
-    getSegments(): JSON
+    getSegments(): any
     /**
      * Returns the segment with the supplied short code
      * @validity All Scripts
@@ -46,7 +46,7 @@ interface SparkConfig {
      * Returns a list of the Teams configured against the game
      * @validity All Scripts
      */
-    getTeams(): JSON
+    getTeams(): any
     /**
      * Returns the team with the supplied short code
      * @validity All Scripts
@@ -56,7 +56,7 @@ interface SparkConfig {
      * Returns a list of the Challenges configured against the game
      * @validity All Scripts
      */
-    getChallenges(): JSON
+    getChallenges(): any
     /**
      * Returns the challenge with the supplied short code
      * @validity All Scripts
@@ -76,7 +76,7 @@ interface SparkConfig {
      * Returns a list of the match configurations for the game
      * @validity All Scripts
      */
-    getMatchConfigs(): JSON
+    getMatchConfigs(): any
     /**
      * Returns the match configuration with the supplied short code
      * @validity All Scripts
@@ -86,7 +86,7 @@ interface SparkConfig {
      * Returns a list of the custom currency configurations for the game
      * @validity All Scripts
      */
-    getCurrencies(): JSON
+    getCurrencies(): any
     /**
      * Returns the custom currency configuration with the supplied short code
      * @validity All Scripts

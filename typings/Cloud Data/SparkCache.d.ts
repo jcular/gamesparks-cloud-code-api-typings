@@ -13,13 +13,13 @@ interface SparkCache {
      * Adds an object to the cache
      * @example theCache.put("key", myObject);
      */
-    put(key: string, object: JSON): void
+    put(key: string, object: any): void
     /**
      * Gets an objects from the cache
      * @returns A JavaScipt object, or null depending on whether put has ben called for the given key 
      * @example var myObject = theCache.get("key");
      */
-    get(key: string): JSON
+    get(key: string): any
     /**
      * Remove an object from the cache
      * The object will be removed form the cache, and form the database. Subsequent calls to get will return null
