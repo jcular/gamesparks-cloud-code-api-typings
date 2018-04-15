@@ -31,7 +31,7 @@ interface IClassInfo {
 	}[],
 }
 
-async function main() {
+async function build() {
 	console.log("read...");
 	let dom = await JSDOM.fromURL(webUrl);
 
@@ -245,4 +245,4 @@ function getLevelSpace(level: number) {
 	return space;
 }
 
-main();
+build();
