@@ -3,16 +3,16 @@ import * as fs from "fs";
 import { JSDOM } from 'jsdom';
 import * as glob from "glob";
 
-let webUrl = "https://docs.gamesparks.com/api-documentation/";
-let outPath = "./typings/";
-let baseUrl = "https://docs.gamesparks.com";
-let baseHref = "/api-documentation/cloud-code-api/";
-let baseMenuTitle = "Cloud Code API";
-let ingnoreDescriptions = [
+const webUrl = "https://docs.gamesparks.com/api-documentation/";
+const outPath = "./typings/";
+const baseUrl = "https://docs.gamesparks.com";
+const baseHref = "/api-documentation/cloud-code-api/";
+const baseMenuTitle = "Cloud Code API";
+const ingnoreDescriptions = [
 	"@returns example",
 ];
-// JSON is exist of ex2015
-let typeConverts: { from: string, to: string, }[] =
+// JSON is exist of es2015
+const typeConverts: { from: string, to: string, }[] =
 	[
 		{ from: "JSON", to: "any" },
 		{ from: "JSON[]", to: "any[]" },
@@ -40,30 +40,30 @@ interface IClassInfo {
 
 async function build() {
 	console.log("read...");
-	let dom = await JSDOM.fromURL(webUrl);
+	const dom = await JSDOM.fromURL(webUrl);
 
-	let subMenus = dom.window.document.getElementsByClassName("sub-menu ");
+	const subMenus = dom.window.document.getElementsByClassName("sub-menu ");
 	for (let i = 0; i < subMenus.length; i++) {
-		let subMenu = subMenus[i];
-		let firstChild = subMenu.childNodes[1] as Element;
-		let title = firstChild.textContent as string;
-		let href = firstChild.attributes.getNamedItem("href")!.nodeValue as string;
+		const subMenu = subMenus[i];
+		const firstChild = subMenu.childNodes[1] as Element;
+		const title = firstChild.textContent as string;
+		const href = firstChild.attributes.getNamedItem("href")!.nodeValue as string;
 		if (href.indexOf(baseHref) != 0) {
 			continue;
 		}
 
-		let url = baseUrl + href;
-		let page = await JSDOM.fromURL(url);
-		let content = page.window.document.getElementsByClassName("content")[0];
+		const url = baseUrl + href;
+		const page = await JSDOM.fromURL(url);
+		const content = page.window.document.getElementsByClassName("content")[0];
 		let folder = "";
 		if (subMenu.parentNode && subMenu.parentNode.parentNode) {
-			let parent = subMenu.parentNode.parentNode;
+			const parent = subMenu.parentNode.parentNode;
 			if (parent.childNodes[1].textContent != baseMenuTitle) {
 				folder = parent.childNodes[1].textContent as string;
 			}
 		}
 
-		let c: IClassInfo = {
+		const c: IClassInfo = {
 			name: "",
 			folder: folder,
 			descriptions: [],
@@ -72,7 +72,7 @@ async function build() {
 
 		let j = 0;
 		for (; j < content.childNodes.length; j++) {
-			let childNode = content.childNodes[j] as Element;
+			const childNode = content.childNodes[j] as Element;
 			if (childNode.localName == undefined) {
 				continue;
 			}
@@ -86,11 +86,11 @@ async function build() {
 			c.descriptions.push(childNode.textContent as string);
 		}
 		for (; j < content.childNodes.length; j++) {
-			let childNode = content.childNodes[j] as Element;
+			const childNode = content.childNodes[j] as Element;
 			if (childNode.localName == undefined || !childNode.textContent) {
 				continue;
 			}
-			let firstChild = childNode.childNodes.length > 0 ? childNode.childNodes[0] as Element : undefined;
+			const firstChild = childNode.childNodes.length > 0 ? childNode.childNodes[0] as Element : undefined;
 			// signature
 			if (!!firstChild && firstChild.localName as string == "em" && childNode.childNodes[0].textContent == "signature") {
 				let signature = childNode.childNodes[1].textContent as string;
@@ -99,10 +99,10 @@ async function build() {
 				}
 				signature = signature.substr(1);
 				if (signature.indexOf("()") == -1) {
-					let parsStr = signature.split("(")[1].split(")")[0];
-					let pars = parsStr.split(", ");
+					const parsStr = signature.split("(")[1].split(")")[0];
+					const pars = parsStr.split(", ");
 					for (let k = 0; k < pars.length; k++) {
-						let temp = pars[k].split(" ");
+						const temp = pars[k].split(" ");
 						pars[k] = temp[1] + ": " + convertType(temp[0]);
 					}
 					signature = signature.split("(")[0] + "(" + pars.join(", ") + ")";
@@ -120,10 +120,10 @@ async function build() {
 				});
 				continue;
 			}
-			let lastSignature = c.signatures[c.signatures.length - 1];
+			const lastSignature = c.signatures[c.signatures.length - 1];
 			// returns
 			if (!!firstChild && firstChild.localName as string == "em" && childNode.childNodes[0].textContent == "returns") {
-				let returns = childNode.textContent.replace("returns ", "");
+				const returns = childNode.textContent.replace("returns ", "");
 				lastSignature.returns = convertType(returns);
 				continue;
 			}
@@ -149,13 +149,13 @@ async function build() {
 				}
 				// params start
 				else if (childNode.textContent.indexOf(" - ") >= 0) {
-					let pStrs = childNode.textContent.split(" - ");
+					const pStrs = childNode.textContent.split(" - ");
 					lastSignature.params.push({
 						name: pStrs[0],
 						descriptions: pStrs.length > 0 ? [pStrs[1]] : [],
 					});
 					for (let k = j + 1; k < content.childNodes.length; k++) {
-						let nextChildNode = content.childNodes[k] as Element;
+						const nextChildNode = content.childNodes[k] as Element;
 						if (nextChildNode.localName == undefined) {
 							continue;
 						}
@@ -190,7 +190,7 @@ async function build() {
 	wirteIndexDts();
 }
 function wirteIndexDts() {
-	let path = "./index.d.ts";
+	const path = "./index.d.ts";
 	glob(outPath + "**/*.d.ts", (err, files) => {
 		let index = "";
 		files.forEach(file => {
@@ -216,7 +216,7 @@ function handleData(data: IClassInfo) {
 	dts += getLevelSpace(level) + "interface " + data.name + " {\n";
 	level++; {
 		for (let i = 0; i < data.signatures.length; i++) {
-			let signature = data.signatures[i];
+			const signature = data.signatures[i];
 			if (signature.deprecated) {
 				signature.descriptions.push("@deprecated " + signature.deprecated);
 			}
@@ -241,13 +241,13 @@ function handleData(data: IClassInfo) {
 	} level--;
 	dts += getLevelSpace(level) + "}\n";
 
-	let path = outPath + (data.folder ? data.folder + "/" : "") + data.name + ".d.ts";
+	const path = outPath + (data.folder ? data.folder + "/" : "") + data.name + ".d.ts";
 	console.log(path);
 	fs.writeFileSync(path, dts);
 }
 function convertType(t: string): string {
 	for (let i = 0; i < typeConverts.length; i++) {
-		let convert = typeConverts[i];
+		const convert = typeConverts[i];
 		if (t == convert.from) {
 			return convert.to;
 		}
