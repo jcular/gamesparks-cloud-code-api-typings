@@ -4,8 +4,8 @@ declare type SparkPendingMatch = any;
 declare type ScriptableObject = any;
 declare type List = any[];
 
-declare let Spark: Spark;
+declare const Spark: Spark;
 
 interface Spark {
-    runtimeCollection(collectionName: string): SparkMongoCollectionReadWrite
+    runtimeCollection(collectionName: string): SparkMongoCollectionReadWrite // Obsolete
 }
