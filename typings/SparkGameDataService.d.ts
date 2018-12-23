@@ -19,7 +19,7 @@ interface SparkGameDataService {
      */
     getItem(type: string, id: string): SparkDataGetResult
     /**
-     * Queries the indices for a number of items that match the supplied condition
+     * Queries the indices for a number of items that match the supplied condition. Queries are eventually consistent. If you use queryItems immediately after you've inserted data, you might not get the expected results returned.
      */
     queryItems(type: string, condition: SparkDataCondition, sortOrder: SparkDataSortOrder): SparkDataQueryResult
     /**
