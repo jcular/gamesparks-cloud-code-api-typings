@@ -45,8 +45,9 @@ async function build() {
 	let subMenus = dom.window.document.getElementsByClassName("sub-menu ");
 	for (let i = 0; i < subMenus.length; i++) {
 		let subMenu = subMenus[i];
-		let title = subMenu.childNodes[1].textContent as string;
-		let href = subMenu.childNodes[1].attributes.getNamedItem("href").nodeValue as string;
+		let firstChild = subMenu.childNodes[1] as Element;
+		let title = firstChild.textContent as string;
+		let href = firstChild.attributes.getNamedItem("href")!.nodeValue as string;
 		if (href.indexOf(baseHref) != 0) {
 			continue;
 		}
@@ -71,7 +72,7 @@ async function build() {
 
 		let j = 0;
 		for (; j < content.childNodes.length; j++) {
-			let childNode = content.childNodes[j];
+			let childNode = content.childNodes[j] as Element;
 			if (childNode.localName == undefined) {
 				continue;
 			}
@@ -85,12 +86,13 @@ async function build() {
 			c.descriptions.push(childNode.textContent as string);
 		}
 		for (; j < content.childNodes.length; j++) {
-			let childNode = content.childNodes[j];
+			let childNode = content.childNodes[j] as Element;
 			if (childNode.localName == undefined || !childNode.textContent) {
 				continue;
 			}
+			let firstChild = childNode.childNodes.length > 0 ? childNode.childNodes[0] as Element : undefined;
 			// signature
-			if (childNode.childNodes.length > 0 && childNode.childNodes[0].localName as string == "em" && childNode.childNodes[0].textContent == "signature") {
+			if (!!firstChild && firstChild.localName as string == "em" && childNode.childNodes[0].textContent == "signature") {
 				let signature = childNode.childNodes[1].textContent as string;
 				for (let k = 2; k < childNode.childNodes.length; k++) {
 					signature += childNode.childNodes[k].textContent;
@@ -120,26 +122,26 @@ async function build() {
 			}
 			let lastSignature = c.signatures[c.signatures.length - 1];
 			// returns
-			if (childNode.childNodes.length > 0 && childNode.childNodes[0].localName as string == "em" && childNode.childNodes[0].textContent == "returns") {
+			if (!!firstChild && firstChild.localName as string == "em" && childNode.childNodes[0].textContent == "returns") {
 				let returns = childNode.textContent.replace("returns ", "");
 				lastSignature.returns = convertType(returns);
 				continue;
 			}
 			// deprecated
-			if (childNode.childNodes.length > 0 && childNode.childNodes[0].localName as string == "b" && (childNode.childNodes[0].textContent as string).indexOf("DEPRECATED ") == 0) {
+			if (!!firstChild && firstChild.localName as string == "b" && (childNode.childNodes[0].textContent as string).indexOf("DEPRECATED ") == 0) {
 				let deprecated = childNode.childNodes[childNode.childNodes.length - 1].textContent as string;
 				deprecated = deprecated.replace("DEPRECATED ", "");
 				lastSignature.deprecated = deprecated;
 				continue;
 			}
 			// validity
-			if (childNode.childNodes.length > 0 && childNode.childNodes[0].localName as string == "b" && childNode.childNodes[0].textContent == "validity") {
+			if (!!firstChild && firstChild.localName as string == "b" && childNode.childNodes[0].textContent == "validity") {
 				let validity = childNode.childNodes[childNode.childNodes.length - 1].textContent as string;
 				validity = validity.substring(1);
 				lastSignature.validity = validity;
 				continue;
 			}
-			if (childNode.childNodes.length > 0 && childNode.childNodes[0].localName == undefined && childNode.localName as string == "p") {
+			if (!!firstChild && firstChild.localName == undefined && childNode.localName as string == "p") {
 				// description start
 				if (lastSignature.lastDescriptionIndex == -1) {
 					lastSignature.descriptions.push(childNode.textContent);
@@ -153,11 +155,11 @@ async function build() {
 						descriptions: pStrs.length > 0 ? [pStrs[1]] : [],
 					});
 					for (let k = j + 1; k < content.childNodes.length; k++) {
-						let nextChildNode = content.childNodes[k];
+						let nextChildNode = content.childNodes[k] as Element;
 						if (nextChildNode.localName == undefined) {
 							continue;
 						}
-						if (nextChildNode.childNodes.length == 1 && nextChildNode.childNodes[0].localName == undefined && nextChildNode.localName as string == "p" && nextChildNode.textContent && nextChildNode.textContent.indexOf(" - ") == -1) {
+						if (nextChildNode.childNodes.length == 1 && (nextChildNode.childNodes[0] as Element).localName == undefined && nextChildNode.localName as string == "p" && nextChildNode.textContent && nextChildNode.textContent.indexOf(" - ") == -1) {
 							lastSignature.params[lastSignature.params.length - 1].descriptions.push(nextChildNode.textContent);
 							j++
 							continue;
@@ -172,7 +174,7 @@ async function build() {
 				continue;
 			}
 			// returns description
-			if (childNode.childNodes.length > 0 && childNode.childNodes[0].localName as string == "b" && childNode.childNodes[0].textContent == "returns") {
+			if (!!firstChild && firstChild.localName as string == "b" && childNode.childNodes[0].textContent == "returns") {
 				lastSignature.returnsDescription = content.childNodes[j + 2].textContent as string;
 				j += 2;
 				continue;
