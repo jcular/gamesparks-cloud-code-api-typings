@@ -36,23 +36,16 @@ interface SparkPlayer {
     /**
      * Credits the currency1 balance of the player with the amount specified.
      * @param quantity the amount to credit
-     * @param reason the reason for the credit
-     * @example Spark.getPlayer().credit1(20, "Loyalty Bonus");
-     */
-    credit1(quantity: number, reason: string): void
-    /**
-     * Credits the currency1 balance of the player with the amount specified.
-     * @param quantity the amount to credit
      * @example Spark.getPlayer().credit1(20);
      */
     credit1(quantity: number): void
     /**
-     * Debits the currency1 balance of the player with the amount specified.
-     * @param quantity the amount to debit
-     * @returns  true if the debit was successful, false if the current balance was not sufficient
-     * @example Spark.getPlayer().debit1(5);
+     * Credits the currency1 balance of the player with the amount specified.
+     * @param quantity the amount to credit
+     * @param reason the reason for the credit
+     * @example Spark.getPlayer().credit1(20, "Loyalty Bonus");
      */
-    debit1(quantity: number): boolean
+    credit1(quantity: number, reason: string): void
     /**
      * Debits the currency1 balance of the player with the amount specified.
      * @param quantity the amount to debit
@@ -61,6 +54,13 @@ interface SparkPlayer {
      * @example Spark.getPlayer().debit1(5, "Loser Penalty");
      */
     debit1(quantity: number, reason: string): boolean
+    /**
+     * Debits the currency1 balance of the player with the amount specified.
+     * @param quantity the amount to debit
+     * @returns  true if the debit was successful, false if the current balance was not sufficient
+     * @example Spark.getPlayer().debit1(5);
+     */
+    debit1(quantity: number): boolean
     /**
      * Credits the currency2 balance of the player with the amount specified.
      * @param quantity the amount to credit
@@ -92,16 +92,16 @@ interface SparkPlayer {
     /**
      * Credits the currency3 balance of the player with the amount specified.
      * @param quantity the amount to credit
+     * @example Spark.getPlayer().credit3(20);
+     */
+    credit3(quantity: number): void
+    /**
+     * Credits the currency3 balance of the player with the amount specified.
+     * @param quantity the amount to credit
      * @param reason the reason for the credit
      * @example Spark.getPlayer().credit3(20, "Loyalty Bonus");
      */
     credit3(quantity: number, reason: string): void
-    /**
-     * Credits the currency3 balance of the player with the amount specified.
-     * @param quantity the amount to credit
-     * @example Spark.getPlayer().credit3(20);
-     */
-    credit3(quantity: number): void
     /**
      * Debits the currency3 balance of the player with the amount specified.
      * Returns true if the debit was successful, false if the current balance was not sufficient.
@@ -134,17 +134,23 @@ interface SparkPlayer {
      * Debits the currency4 balance of the player with the amount specified.
      * Returns true if the debit was successful, false if the current balance was not sufficient.
      * @param quantity the amount to debit
+     * @example Spark.getPlayer().debit4(5);
+     */
+    debit4(quantity: number): boolean
+    /**
+     * Debits the currency4 balance of the player with the amount specified.
+     * Returns true if the debit was successful, false if the current balance was not sufficient.
+     * @param quantity the amount to debit
      * @param reason the reason for the debit
      * @example Spark.getPlayer().debit4(5, "Loser Penalty");
      */
     debit4(quantity: number, reason: string): boolean
     /**
-     * Debits the currency4 balance of the player with the amount specified.
-     * Returns true if the debit was successful, false if the current balance was not sufficient.
-     * @param quantity the amount to debit
-     * @example Spark.getPlayer().debit4(5);
+     * Credits the currency5 balance of the player with the amount specified.
+     * @param quantity the amount to credit
+     * @example Spark.getPlayer().credit5(20);
      */
-    debit4(quantity: number): boolean
+    credit5(quantity: number): void
     /**
      * Credits the currency5 balance of the player with the amount specified.
      * @param quantity the amount to credit
@@ -152,12 +158,6 @@ interface SparkPlayer {
      * @example Spark.getPlayer().credit5(20, "Loyalty Bonus");
      */
     credit5(quantity: number, reason: string): void
-    /**
-     * Credits the currency5 balance of the player with the amount specified.
-     * @param quantity the amount to credit
-     * @example Spark.getPlayer().credit5(20);
-     */
-    credit5(quantity: number): void
     /**
      * Debits the currency5 balance of the player with the amount specified.
      * Returns true if the debit was successful, false if the current balance was not sufficient.
@@ -176,16 +176,23 @@ interface SparkPlayer {
     /**
      * Credits the currency6 balance of the player with the amount specified.
      * @param quantity the amount to credit
+     * @example Spark.getPlayer().credit6(20);
+     */
+    credit6(quantity: number): void
+    /**
+     * Credits the currency6 balance of the player with the amount specified.
+     * @param quantity the amount to credit
      * @param reason the reason for the credit
      * @example Spark.getPlayer().credit6(20, "Loyalty Bonus");
      */
     credit6(quantity: number, reason: string): void
     /**
-     * Credits the currency6 balance of the player with the amount specified.
-     * @param quantity the amount to credit
-     * @example Spark.getPlayer().credit6(20);
+     * Debits the currency6 balance of the player with the amount specified.
+     * Returns true if the debit was successful, false if the current balance was not sufficient.
+     * @param quantity the amount to debit
+     * @example Spark.getPlayer().debit6(5);
      */
-    credit6(quantity: number): void
+    debit6(quantity: number): boolean
     /**
      * Debits the currency6 balance of the player with the amount specified.
      * Returns true if the debit was successful, false if the current balance was not sufficient.
@@ -194,13 +201,6 @@ interface SparkPlayer {
      * @example Spark.getPlayer().debit6(5, "Loser Penalty");
      */
     debit6(quantity: number, reason: string): boolean
-    /**
-     * Debits the currency6 balance of the player with the amount specified.
-     * Returns true if the debit was successful, false if the current balance was not sufficient.
-     * @param quantity the amount to debit
-     * @example Spark.getPlayer().debit6(5);
-     */
-    debit6(quantity: number): boolean
     /**
      * Gets the currency1 balance of the player.
      * @example var bal = Spark.getPlayer().getBalance1();
@@ -211,18 +211,18 @@ interface SparkPlayer {
      * Returns true if the debit was successful, false if the current balance was not sufficient.
      * @param shortCode the shortCode of the named currency to debit
      * @param quantity the amount to debit
-     * @example Spark.getPlayer().debit("GOLD", 5);
+     * @param reason the reason for the debit
+     * @example Spark.getPlayer().debit("GOLD", 5, "Loser Penalty");
      */
-    debit(shortCode: string, quantity: number): boolean
+    debit(shortCode: string, quantity: number, reason: string): boolean
     /**
      * Debits the named currency balance of the player with the amount specified.
      * Returns true if the debit was successful, false if the current balance was not sufficient.
      * @param shortCode the shortCode of the named currency to debit
      * @param quantity the amount to debit
-     * @param reason the reason for the debit
-     * @example Spark.getPlayer().debit("GOLD", 5, "Loser Penalty");
+     * @example Spark.getPlayer().debit("GOLD", 5);
      */
-    debit(shortCode: string, quantity: number, reason: string): boolean
+    debit(shortCode: string, quantity: number): boolean
     /**
      * Gets the currency2 balance of the player.
      * @example var bal = Spark.getPlayer().getBalance2();

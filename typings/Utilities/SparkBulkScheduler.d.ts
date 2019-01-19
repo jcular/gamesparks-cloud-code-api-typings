@@ -29,8 +29,8 @@ interface SparkBulkScheduler {
      * Cancel a previously scheduled bulk job.
      * @validity All Scripts
      * @param jobId The ID of the job to cancel
-     * @returns true if the job was cancelled, false otherwise
-     * @example var cancelled = Spark.getBulkScheduler().cancelJob(jobIdToCancel);
+     * @returns true if the job was canceled, false otherwise
+     * @example var canceled = Spark.getBulkScheduler().cancelJob(jobIdToCancel);
      */
     cancelJob(jobId: string): boolean
     /**
@@ -38,7 +38,7 @@ interface SparkBulkScheduler {
      * @validity All Scripts
      * @param jobIds The IDs of the jobs to list, or null to list all pending jobs
      * @returns An array of bulk jobs
-     * @example var cancelled = Spark.getBulkScheduler().listBulkJobs(null);
+     * @example var canceled = Spark.getBulkScheduler().listBulkJobs(null);
      */
     listBulkJobs(jobIds: string[]): SparkBulkJob[]
 }

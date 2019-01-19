@@ -21,7 +21,7 @@ interface SparkMongoCursor {
      */
     size(): number
     /**
-     * Counts the number of objects matching the query this does take limit/skip into consideration.
+     * Counts the number of objects matching the query this does not take limit/skip into consideration.
      * @example var count = collection.find( query ).count();
      */
     count(): number
@@ -36,7 +36,7 @@ interface SparkMongoCursor {
      */
     hasNext(): boolean
     /**
-     * Returns the object the cursor is at and moves the cursor ahead by one.
+     * Moves the cursor ahead by one and returns the object the cursor is then at.
      * @returns a JSON object
      * @example var cursor = collection.find( query ); if( cursor.hasNext() ) {var obj = cursor.next();}
      */

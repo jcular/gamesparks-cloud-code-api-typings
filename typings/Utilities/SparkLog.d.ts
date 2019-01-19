@@ -25,7 +25,7 @@ interface SparkLog {
      */
     warn(msg: any): void
     /**
-     * Records value into the spark.log table with the level set to info.
+     * Records value into the spark.log table with the level set to error.
      * @param msg the message to log
      * @example Spark.getLog().error({type:"JSON logging"})
      */

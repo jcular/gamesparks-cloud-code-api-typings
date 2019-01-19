@@ -58,15 +58,15 @@ interface SparkLeaderboard {
      */
     getPartitions(): SparkLeaderboardPartition[]
     /**
-     * Deletes the underlying data for this leaderboard, making it like new.
-     * @example Spark.getLeaderboards().getLeaderboard(shortCode).drop();
-     */
-    drop(): void
-    /**
      * See #drop.  Additionally deletes the underlying running total data, resetting any record of players' scores.
      * @example leaderboard.drop(true);
      */
     drop(deleteRunningTotalData: boolean): void
+    /**
+     * Deletes the underlying data for this leaderboard, making it like new.
+     * @example Spark.getLeaderboards().getLeaderboard(shortCode).drop();
+     */
+    drop(): void
     /**
      * Returns the array of leaderboard entries that correspond to the supplied identifier and customIdFilter
      * If the customIdFilter is null, the method returns all the entries in the leaderboard for the suplied identifier

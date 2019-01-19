@@ -8,7 +8,7 @@ interface SparkDataCursor {
      */
     hasNext(): boolean
     /**
-     * Returns the object the cursor is at and moves the cursor ahead by one.
+     * Moves the cursor ahead by one and returns the object the cursor is then at.
      */
     next(): SparkDataItem
 }

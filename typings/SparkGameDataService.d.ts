@@ -11,7 +11,7 @@ interface SparkGameDataService {
      */
     S(shortCode: string): SparkDataStringOperand
     /**
-     * Create a new item that can later be persisted
+     * Create a new item that can later be persisted. If you insert an item using the same ID as an existing item, then the create action overwrites the existing.
      */
     createItem(type: string, id: string): SparkDataItem
     /**

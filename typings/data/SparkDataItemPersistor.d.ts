@@ -19,7 +19,7 @@ interface SparkDataItemPersistor {
      */
     withConditionCheck(condition: SparkDataCondition): SparkDataItemPersistor
     /**
-     * If set, when the document is serialised for persistance, if an unsupported data type is found, an exception will be thrown
+     * If set, when the document is serialized for persistance, if an unsupported data type is found, an exception will be thrown
      */
     withErrorOnTypeConversion(): SparkDataItemPersistor
     /**
