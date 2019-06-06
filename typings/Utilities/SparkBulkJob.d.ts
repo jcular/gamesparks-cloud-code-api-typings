@@ -1,12 +1,13 @@
 /**
  * An object that represents a bulk job.
- * e.g.
+ * @example
  * var bulkJob = Spark.getBulkJobScheduler().listBulkJobs(null)[0];
  */
 interface SparkBulkJob {
     /**
      * Returns the ID of this bulk job.
-     * @example Spark.getBulkJobScheduler().listBulkJobs(null)[0].getId();
+     * @example
+     * Spark.getBulkJobScheduler().listBulkJobs(null)[0].getId();
      */
     getId(): string
     /**

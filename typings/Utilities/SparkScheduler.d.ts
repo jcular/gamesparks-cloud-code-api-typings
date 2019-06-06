@@ -10,7 +10,8 @@ interface SparkScheduler {
      * @param shortCode The shortCode of the module to execute
      * @param delaySeconds How long to wait until executing the module
      * @param data The data to pass to the module. This will be available as Spark.getData() when the module is running
-     * @example theScheduler.inSeconds("SHORT_CODE", 15, {"myData" : myData});
+     * @example
+     * theScheduler.inSeconds("SHORT_CODE", 15, {"myData" : myData});
      */
     inSeconds(shortCode: string, delaySeconds: number, data: any): boolean
     /**
@@ -19,7 +20,8 @@ interface SparkScheduler {
      * @param delaySeconds How long to wait until executing the module
      * @param data The data to pass to the module. This will be available as Spark.getData() when the module is running
      * @param key The id of the scheduled item. If schedule already exists for the given key it's details will be updated
-     * @example theScheduler.inSeconds("SHORT_CODE", 15, {"myData" : myData}, "logTimeout-" + Spark.getPlayer().getPlayerId());
+     * @example
+     * theScheduler.inSeconds("SHORT_CODE", 15, {"myData" : myData}, "logTimeout-" + Spark.getPlayer().getPlayerId());
      */
     inSeconds(shortCode: string, delaySeconds: number, data: any, key: string): boolean
     /**

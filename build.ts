@@ -1,4 +1,3 @@
-import * as https from "https";
 import * as fs from "fs";
 import { JSDOM } from 'jsdom';
 import * as glob from "glob";
@@ -233,7 +232,8 @@ function handleData(data: IClassInfo) {
 				signature.descriptions.push("@returns " + signature.returnsDescription);
 			}
 			if (signature.example) {
-				signature.descriptions.push("@example " + signature.example);
+				signature.descriptions.push("@example");
+				signature.descriptions.push(signature.example);
 			}
 			dts += createDes(signature.descriptions, level);
 			dts += getLevelSpace(level) + signature.text + ": " + signature.returns + "\n"
@@ -257,6 +257,10 @@ function convertType(t: string): string {
 function createDes(dess: string[], level: number) {
 	if (dess.length == 0) {
 		return "";
+	}
+	for (let i = 0; i < dess.length; i++) {
+		if (dess[i] == "e.g.")
+			dess[i] = "@example";
 	}
 	let des = getLevelSpace(level) + "/**\n";
 	for (let i = 0; i < dess.length; i++) {

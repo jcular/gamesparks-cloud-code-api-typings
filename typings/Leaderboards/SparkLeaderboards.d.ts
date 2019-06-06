@@ -7,7 +7,8 @@ interface SparkLeaderboards {
      * Allows a script to load a SparkLeaderboard object by its shortCode.
      * @validity All Scripts
      * @param shortCode the shortCode of the leaderboard.
-     * @example var leaderboard = Spark.getLeaderboards().getLeaderboard(shortCode);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getLeaderboard(shortCode);
      */
     getLeaderboard(shortCode: string): SparkLeaderboard
     /**
@@ -16,7 +17,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param shortCode the shortCode of the leaderboard.
      * @param friendsIds the ids of the other players to be included in this social leaderboard.
-     * @example var leaderboard = Spark.getLeaderboards().getSocialLeaderboard(shortCode, myplayerids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getSocialLeaderboard(shortCode, myplayerids);
      */
     getSocialLeaderboard(shortCode: string, friendIds: string[]): SparkLeaderboard
     /**
@@ -25,7 +27,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param shortCode the shortCode of the leaderboard.
      * @param friendsIds the ids of the other players to be excluded from this social leaderboard.
-     * @example var leaderboard = Spark.getLeaderboards().getInverseSocialLeaderboard(shortCode, myplayerids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getInverseSocialLeaderboard(shortCode, myplayerids);
      */
     getInverseSocialLeaderboard(shortCode: string, friendIds: string[]): SparkLeaderboard
     /**
@@ -35,7 +38,8 @@ interface SparkLeaderboards {
      * @param shortCode the shortCode of the leaderboard.
      * @param playerId the playerId to load the social leaderboard for.
      * @param friendsIds the ids of the other players to be included in this social leaderboard.
-     * @example var leaderboard = Spark.getLeaderboards().getSocialLeaderboardAs(shortCode, myplayerid, myplayerids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getSocialLeaderboardAs(shortCode, myplayerid, myplayerids);
      */
     getSocialLeaderboardAs(shortCode: string, playerId: string, friendIds: string[]): SparkLeaderboard
     /**
@@ -45,7 +49,8 @@ interface SparkLeaderboards {
      * @param shortCode the shortCode of the leaderboard.
      * @param playerId the playerId to load the social leaderboard for.
      * @param friendsIds the ids of the other players to be excluded from this social leaderboard.
-     * @example var leaderboard = Spark.getLeaderboards().getInverseSocialLeaderboardAs(shortCode, myplayerid, myplayerids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getInverseSocialLeaderboardAs(shortCode, myplayerid, myplayerids);
      */
     getInverseSocialLeaderboardAs(shortCode: string, playerId: string, friendIds: string[]): SparkLeaderboard
     /**
@@ -53,7 +58,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param shortCode the shortCode of the leaderboard.
      * @param teamids the ids of the teams to be included in this social leaderboard
-     * @example var leaderboard = Spark.getLeaderboards().getTeamLeaderboard(shortCode, myteamids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getTeamLeaderboard(shortCode, myteamids);
      */
     getTeamLeaderboard(shortCode: string, teamIds: string[]): SparkLeaderboard
     /**
@@ -61,7 +67,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param shortCode the shortCode of the leaderboard.
      * @param teamids the ids of the teams to be excluded from this social leaderboard
-     * @example var leaderboard = Spark.getLeaderboards().getInverseTeamLeaderboard(shortCode, myteamids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getInverseTeamLeaderboard(shortCode, myteamids);
      */
     getInverseTeamLeaderboard(shortCode: string, teamIds: string[]): SparkLeaderboard
     /**
@@ -70,7 +77,8 @@ interface SparkLeaderboards {
      * @param shortCode the shortCode of the leaderboard.
      * @param playerId the playerId to load the social leaderboard for.
      * @param teamids the ids of the teams to be included in this social leaderboard
-     * @example var leaderboard = Spark.getLeaderboards().getTeamLeaderboard(shortCode, myplayerid, myteamids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getTeamLeaderboard(shortCode, myplayerid, myteamids);
      */
     getTeamLeaderboardAs(shortCode: string, playerId: string, teamIds: string[]): SparkLeaderboard
     /**
@@ -79,20 +87,23 @@ interface SparkLeaderboards {
      * @param shortCode the shortCode of the leaderboard.
      * @param playerId the playerId to load the social leaderboard for.
      * @param teamids the ids of the teams to be excluded from this social leaderboard
-     * @example var leaderboard = Spark.getLeaderboards().getInverseTeamLeaderboard(shortCode, myplayerid, myteamids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getInverseTeamLeaderboard(shortCode, myplayerid, myteamids);
      */
     getInverseTeamLeaderboardAs(shortCode: string, playerId: string, teamIds: string[]): SparkLeaderboard
     /**
      * Gives access to all leaderboards configured for the game
      * @validity All Scripts
-     * @example var leaderboards = Spark.getLeaderboards().listLeaderboards();
+     * @example
+     * var leaderboards = Spark.getLeaderboards().listLeaderboards();
      */
     listLeaderboards(): SparkLeaderboard[]
     /**
      * Allows a script to load a SparkLeaderboard object for a specific challenge by the challengeInstanceId.
      * @validity All Scripts
      * @param challengeInstanceId the id of the challenge instance to load the leaderboard for.
-     * @example var leaderboard = Spark.getLeaderboards().getChallengeLeaderboard(challengeInstanceId);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getChallengeLeaderboard(challengeInstanceId);
      */
     getChallengeLeaderboard(challengeInstanceId: string): SparkLeaderboard
     /**
@@ -101,7 +112,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param challengeInstanceId the id of the challenge instance to load the leaderboard for.
      * @param friendsIds the ids of the other players to be included in this social leaderboard.
-     * @example var leaderboard = Spark.getLeaderboards().getSocialChallengeLeaderboard(challengeInstanceId, myplayerids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getSocialChallengeLeaderboard(challengeInstanceId, myplayerids);
      */
     getSocialChallengeLeaderboard(challengeInstanceId: string, friendsIds: string[]): SparkLeaderboard
     /**
@@ -111,7 +123,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param lhs the left-hand side of the operation.
      * @param rhs the the right-hand side of the operation.
-     * @example var inAny = Spark.getLeaderboards().union(lhs, rhs).evaluate();
+     * @example
+     * var inAny = Spark.getLeaderboards().union(lhs, rhs).evaluate();
      */
     union(lhs: SparkLeaderboardOperations, rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
     /**
@@ -121,7 +134,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param lhs the left-hand side of the operation.
      * @param rhs the the right-hand side of the operation.
-     * @example var inAny = Spark.getLeaderboards().union(lhs, rhs).evaluate();
+     * @example
+     * var inAny = Spark.getLeaderboards().union(lhs, rhs).evaluate();
      */
     union(lhs: SparkLeaderboardOperations, rhs: SparkLeaderboard): SparkLeaderboardOperations
     /**
@@ -131,7 +145,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param lhs the left-hand side of the operation.
      * @param rhs the the right-hand side of the operation.
-     * @example var inAny = Spark.getLeaderboards().union(lhs, rhs).evaluate();
+     * @example
+     * var inAny = Spark.getLeaderboards().union(lhs, rhs).evaluate();
      */
     union(lhs: SparkLeaderboard, rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
     /**
@@ -141,7 +156,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param lhs the left-hand side of the operation.
      * @param rhs the the right-hand side of the operation.
-     * @example var inAny = Spark.getLeaderboards().union(lhs, rhs).evaluate();
+     * @example
+     * var inAny = Spark.getLeaderboards().union(lhs, rhs).evaluate();
      */
     union(lhs: SparkLeaderboard, rhs: SparkLeaderboard): SparkLeaderboardOperations
     /**
@@ -150,7 +166,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param challengeInstanceId the id of the challenge instance to load the leaderboard for.
      * @param friendsIds the ids of the other players to be excluded from this social leaderboard.
-     * @example var leaderboard = Spark.getLeaderboards().getInverseSocialChallengeLeaderboard(challengeInstanceId, myplayerids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getInverseSocialChallengeLeaderboard(challengeInstanceId, myplayerids);
      */
     getInverseSocialChallengeLeaderboard(challengeInstanceId: string, friendsIds: string[]): SparkLeaderboard
     /**
@@ -160,7 +177,8 @@ interface SparkLeaderboards {
      * @param challengeInstanceId the id of the challenge instance to load the leaderboard for.
      * @param playerId the playerId to load the social leaderboard for.
      * @param friendsIds the ids of the other players to be included in this social leaderboard.
-     * @example var leaderboard = Spark.getLeaderboards().getSocialChallengeLeaderboardAs(challengeInstanceId, myplayerid, myplayerids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getSocialChallengeLeaderboardAs(challengeInstanceId, myplayerid, myplayerids);
      */
     getSocialChallengeLeaderboardAs(challengeInstanceId: string, playerId: string, friendIds: string[]): SparkLeaderboard
     /**
@@ -170,7 +188,8 @@ interface SparkLeaderboards {
      * @param challengeInstanceId the id of the challenge instance to load the leaderboard for.
      * @param playerId the playerId to load the social leaderboard for.
      * @param friendsIds the ids of the players to be excluded from this social leaderboard.
-     * @example var leaderboard = Spark.getLeaderboards().getInverseSocialChallengeLeaderboardAs(challengeInstanceId, myplayerid, myplayerids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getInverseSocialChallengeLeaderboardAs(challengeInstanceId, myplayerid, myplayerids);
      */
     getInverseSocialChallengeLeaderboardAs(challengeInstanceId: string, playerId: string, friendIds: string[]): SparkLeaderboard
     /**
@@ -178,7 +197,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param challengeInstanceId the id of the challenge instance to load the leaderboard for.
      * @param teamids the ids of the teams to be included in this social leaderboard
-     * @example var leaderboard = Spark.getLeaderboards().getTeamChallengeLeaderboard(challengeInstanceId, myteamids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getTeamChallengeLeaderboard(challengeInstanceId, myteamids);
      */
     getTeamChallengeLeaderboard(challengeInstanceId: string, teamIds: string[]): SparkLeaderboard
     /**
@@ -186,7 +206,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param challengeInstanceId the id of the challenge instance to load the leaderboard for.
      * @param teamids the ids of the teams to be excluded from this social leaderboard
-     * @example var leaderboard = Spark.getLeaderboards().getInverseTeamChallengeLeaderboard(challengeInstanceId, myteamids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getInverseTeamChallengeLeaderboard(challengeInstanceId, myteamids);
      */
     getInverseTeamChallengeLeaderboard(challengeInstanceId: string, teamIds: string[]): SparkLeaderboard
     /**
@@ -196,7 +217,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param lhs the left-hand side of the operation.
      * @param rhs the the right-hand side of the operation.
-     * @example var inBoth = Spark.getLeaderboards().intersection(lhs, rhs).evaluate();
+     * @example
+     * var inBoth = Spark.getLeaderboards().intersection(lhs, rhs).evaluate();
      */
     intersection(lhs: SparkLeaderboardOperations, rhs: SparkLeaderboard): SparkLeaderboardOperations
     /**
@@ -206,7 +228,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param lhs the left-hand side of the operation.
      * @param rhs the the right-hand side of the operation.
-     * @example var inBoth = Spark.getLeaderboards().intersection(lhs, rhs).evaluate();
+     * @example
+     * var inBoth = Spark.getLeaderboards().intersection(lhs, rhs).evaluate();
      */
     intersection(lhs: SparkLeaderboardOperations, rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
     /**
@@ -216,7 +239,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param lhs the left-hand side of the operation.
      * @param rhs the the right-hand side of the operation.
-     * @example var inBoth = Spark.getLeaderboards().intersection(lhs, rhs).evaluate();
+     * @example
+     * var inBoth = Spark.getLeaderboards().intersection(lhs, rhs).evaluate();
      */
     intersection(lhs: SparkLeaderboard, rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
     /**
@@ -226,7 +250,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param lhs the left-hand side of the operation.
      * @param rhs the the right-hand side of the operation.
-     * @example var inBoth = Spark.getLeaderboards().intersection(lhs, rhs).evaluate();
+     * @example
+     * var inBoth = Spark.getLeaderboards().intersection(lhs, rhs).evaluate();
      */
     intersection(lhs: SparkLeaderboard, rhs: SparkLeaderboard): SparkLeaderboardOperations
     /**
@@ -235,7 +260,8 @@ interface SparkLeaderboards {
      * @param challengeInstanceId the id of the challenge instance to load the leaderboard for.
      * @param playerId the playerId to load the social leaderboard for.
      * @param teamids the ids of the teams to be included in this social leaderboard
-     * @example var leaderboard = Spark.getLeaderboards().getTeamChallengeLeaderboard(challengeInstanceId, myplayerid, myteamids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getTeamChallengeLeaderboard(challengeInstanceId, myplayerid, myteamids);
      */
     getTeamChallengeLeaderboardAs(challengeInstanceId: string, playerId: string, teamIds: string[]): SparkLeaderboard
     /**
@@ -244,7 +270,8 @@ interface SparkLeaderboards {
      * @param challengeInstanceId the id of the challenge instance to load the leaderboard for.
      * @param playerId the playerId to load the social leaderboard for.
      * @param teamids the ids of the teams to be excluded from this social leaderboard
-     * @example var leaderboard = Spark.getLeaderboards().getInverseTeamChallengeLeaderboard(challengeInstanceId, myplayerid, myteamids);
+     * @example
+     * var leaderboard = Spark.getLeaderboards().getInverseTeamChallengeLeaderboard(challengeInstanceId, myplayerid, myteamids);
      */
     getInverseTeamChallengeLeaderboardAs(challengeInstanceId: string, playerId: string, teamIds: string[]): SparkLeaderboard
     /**
@@ -254,7 +281,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param lhs the left-hand side of the operation.
      * @param rhs the the right-hand side of the operation.
-     * @example var onlyInFirst = Spark.getLeaderboards().difference(lhs, rhs).evaluate();
+     * @example
+     * var onlyInFirst = Spark.getLeaderboards().difference(lhs, rhs).evaluate();
      */
     difference(lhs: SparkLeaderboardOperations, rhs: SparkLeaderboard): SparkLeaderboardOperations
     /**
@@ -264,7 +292,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param lhs the left-hand side of the operation.
      * @param rhs the the right-hand side of the operation.
-     * @example var onlyInFirst = Spark.getLeaderboards().difference(lhs, rhs).evaluate();
+     * @example
+     * var onlyInFirst = Spark.getLeaderboards().difference(lhs, rhs).evaluate();
      */
     difference(lhs: SparkLeaderboardOperations, rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
     /**
@@ -274,7 +303,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param lhs the left-hand side of the operation.
      * @param rhs the the right-hand side of the operation.
-     * @example var onlyInFirst = Spark.getLeaderboards().difference(lhs, rhs).evaluate();
+     * @example
+     * var onlyInFirst = Spark.getLeaderboards().difference(lhs, rhs).evaluate();
      */
     difference(lhs: SparkLeaderboard, rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
     /**
@@ -284,7 +314,8 @@ interface SparkLeaderboards {
      * @validity All Scripts
      * @param lhs the left-hand side of the operation.
      * @param rhs the the right-hand side of the operation.
-     * @example var onlyInFirst = Spark.getLeaderboards().difference(lhs, rhs).evaluate();
+     * @example
+     * var onlyInFirst = Spark.getLeaderboards().difference(lhs, rhs).evaluate();
      */
     difference(lhs: SparkLeaderboard, rhs: SparkLeaderboard): SparkLeaderboardOperations
 }

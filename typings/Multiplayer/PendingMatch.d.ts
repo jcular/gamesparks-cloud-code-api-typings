@@ -5,38 +5,44 @@ interface PendingMatch {
     /**
      * The ID for the pending match.
      * @validity All Scripts
-     * @example pendingMatch.getId();
+     * @example
+     * pendingMatch.getId();
      */
     getId(): string
     /**
      * The match shortCode for the pending match.
      * @validity All Scripts
-     * @example pendingMatch.getMatchShortCode();
+     * @example
+     * pendingMatch.getMatchShortCode();
      */
     getMatchShortCode(): string
     /**
      * The match group for the pending match.
      * @validity All Scripts
-     * @example pendingMatch.getMatchGroup();
+     * @example
+     * pendingMatch.getMatchGroup();
      */
     getMatchGroup(): string
     /**
      * The average skill of players in this pending match.
      * @validity All Scripts
-     * @example pendingMatch.getSkill();
+     * @example
+     * pendingMatch.getSkill();
      */
     getSkill(): number
     /**
      * The players already part of this pending match.
      * @validity All Scripts
-     * @example pendingMatch.getMatchedPlayers();
+     * @example
+     * pendingMatch.getMatchedPlayers();
      */
     getMatchedPlayers(): SparkMatchedPlayer[]
     /**
      * Join this pending match to the given pending match.
      * @validity All Scripts
      * @returns The merged SparkPendingMatch if it was joined successfully,
-     * @example pendingMatch.joinPendingMatch(otherPendingMatch);
+     * @example
+     * pendingMatch.joinPendingMatch(otherPendingMatch);
      */
     joinPendingMatch(pendingMatchToJoin: PendingMatch): PendingMatch
     /**
@@ -44,13 +50,15 @@ interface PendingMatch {
      * @validity All Scripts
      * @param maxMatchesToFind the maximum number of results to return
      * @returns An array of pending matches suitable for matching with this one.
-     * @example pendingMatch.findPendingMatches();
+     * @example
+     * pendingMatch.findPendingMatches();
      */
     findPendingMatches(maxMatchesToFind: number): SparkPendingMatch[]
     /**
      * Returns the matchData for the pending match.
      * @validity All Scripts
-     * @example pendingMatch.getMatchData();
+     * @example
+     * pendingMatch.getMatchData();
      */
     getMatchData(): any
 }

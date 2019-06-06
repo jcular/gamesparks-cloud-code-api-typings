@@ -1,7 +1,7 @@
 /**
  * Provides access to the Games Redis Instance.
  * Rather than copy and paste the excellent documentation from the Redis site, we've opted to link to the relevant page through the documentation.
- * e.g.
+ * @example
  * var redis = Spark.getRedis();
  */
 interface SparkRedis {

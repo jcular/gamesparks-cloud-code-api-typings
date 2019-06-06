@@ -9,7 +9,8 @@ interface SparkLeaderboardOperations {
      * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
      * @validity All Scripts
      * @param rhs the the right-hand side of the operation.
-     * @example var inAny = operation.union(rhs).evaluate();
+     * @example
+     * var inAny = operation.union(rhs).evaluate();
      */
     union(rhs: SparkLeaderboard): SparkLeaderboardOperations
     /**
@@ -18,7 +19,8 @@ interface SparkLeaderboardOperations {
      * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
      * @validity All Scripts
      * @param rhs the the right-hand side of the operation.
-     * @example var inAny = operation.union(rhs).evaluate();
+     * @example
+     * var inAny = operation.union(rhs).evaluate();
      */
     union(rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
     /**
@@ -27,7 +29,8 @@ interface SparkLeaderboardOperations {
      * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
      * @validity All Scripts
      * @param rhs the the right-hand side of the operation.
-     * @example var inBoth = operation.intersection(rhs).evaluate();
+     * @example
+     * var inBoth = operation.intersection(rhs).evaluate();
      */
     intersection(rhs: SparkLeaderboard): SparkLeaderboardOperations
     /**
@@ -36,7 +39,8 @@ interface SparkLeaderboardOperations {
      * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
      * @validity All Scripts
      * @param rhs the the right-hand side of the operation.
-     * @example var inBoth = operation.intersection(rhs).evaluate();
+     * @example
+     * var inBoth = operation.intersection(rhs).evaluate();
      */
     intersection(rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
     /**
@@ -45,7 +49,8 @@ interface SparkLeaderboardOperations {
      * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
      * @validity All Scripts
      * @param rhs the the right-hand side of the operation.
-     * @example var onlyInFirst = operation.difference(rhs).evaluate();
+     * @example
+     * var onlyInFirst = operation.difference(rhs).evaluate();
      */
     difference(rhs: SparkLeaderboard): SparkLeaderboardOperations
     /**
@@ -54,13 +59,15 @@ interface SparkLeaderboardOperations {
      * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
      * @validity All Scripts
      * @param rhs the the right-hand side of the operation.
-     * @example var onlyInFirst = operation.difference(rhs).evaluate();
+     * @example
+     * var onlyInFirst = operation.difference(rhs).evaluate();
      */
     difference(rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
     /**
      * Returns an array of ids representing the result set of evaluating this operation.
      * @validity All Scripts
-     * @example var results = operation.evaluate();
+     * @example
+     * var results = operation.evaluate();
      */
     evaluate(): string[]
 }

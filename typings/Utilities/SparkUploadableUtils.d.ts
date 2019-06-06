@@ -1,6 +1,6 @@
 /**
  * Provides utility methods to create and retrieve Uploadables.
- * e.g.
+ * @example
  * var uploadableUtils = Spark.getUploadableUtils();
  */
 interface SparkUploadableUtils {
