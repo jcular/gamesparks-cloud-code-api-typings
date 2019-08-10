@@ -50,30 +50,6 @@ interface SparkRedis {
      */
     flushdb(): string
     /**
-     * See http://redis.io/commands/geoadd
-     */
-    geoadd(dstkey: string, memberCoordinateMap: any): number
-    /**
-     * See http://redis.io/commands/geodist
-     */
-    geodist(dstkey: string, member1: string, member2: string, unit: string): number
-    /**
-     * See http://redis.io/commands/geohash
-     */
-    geohash(dstkey: string, members: string[]): any
-    /**
-     * See http://redis.io/commands/geopos
-     */
-    geopos(dstkey: string, members: string[]): any
-    /**
-     * See http://redis.io/commands/georadius
-     */
-    georadius(dstkey: string, longitude: number, latitude: number, radius: number, unit: string, params: any): any
-    /**
-     * See http://redis.io/commands/georadiusbymember
-     */
-    georadiusbymember(dstkey: string, member: string, radius: number, unit: string, params: any): any
-    /**
      * See http://redis.io/commands/get
      */
     get(key: string): string
@@ -272,19 +248,19 @@ interface SparkRedis {
     /**
      * See http://redis.io/commands/set
      */
-    set(key: string, value: string, nxxx: string, expx: string, time: number): string
-    /**
-     * See http://redis.io/commands/set
-     */
     set(key: string, value: string): string
     /**
      * See http://redis.io/commands/set
      */
+    set(key: string, value: string, nxxx: string): string
+    /**
+     * See http://redis.io/commands/set
+     */
     set(key: string, value: string, nxxx: string, expx: string, time: number): string
     /**
      * See http://redis.io/commands/set
      */
-    set(key: string, value: string, nxxx: string): string
+    set(key: string, value: string, nxxx: string, expx: string, time: number): string
     /**
      * See http://redis.io/commands/setbit
      */
@@ -324,11 +300,11 @@ interface SparkRedis {
     /**
      * See http://redis.io/commands/sort
      */
-    sort(key: string): string[]
+    sort(key: string, dstkey: string): number
     /**
      * See http://redis.io/commands/sort
      */
-    sort(key: string, dstkey: string): number
+    sort(key: string): string[]
     /**
      * See http://redis.io/commands/spop
      */
@@ -380,11 +356,11 @@ interface SparkRedis {
     /**
      * See http://redis.io/commands/zcount
      */
-    zcount(key: string, min: string, max: string): number
+    zcount(key: string, min: number, max: number): number
     /**
      * See http://redis.io/commands/zcount
      */
-    zcount(key: string, min: number, max: number): number
+    zcount(key: string, min: string, max: string): number
     /**
      * See http://redis.io/commands/zincrby
      */
@@ -400,11 +376,11 @@ interface SparkRedis {
     /**
      * See http://redis.io/commands/zrangeByScore
      */
-    zrangeByScore(key: string, min: string, max: string, offset: number, count: number): string[]
+    zrangeByScore(key: string, min: number, max: number): string[]
     /**
      * See http://redis.io/commands/zrangeByScore
      */
-    zrangeByScore(key: string, min: string, max: string): string[]
+    zrangeByScore(key: string, min: string, max: string, offset: number, count: number): string[]
     /**
      * See http://redis.io/commands/zrangeByScore
      */
@@ -412,7 +388,11 @@ interface SparkRedis {
     /**
      * See http://redis.io/commands/zrangeByScore
      */
-    zrangeByScore(key: string, min: number, max: number): string[]
+    zrangeByScore(key: string, min: string, max: string): string[]
+    /**
+     * See http://redis.io/commands/zrangeByScoreWithScores
+     */
+    zrangeByScoreWithScores(key: string, min: number, max: number): any
     /**
      * See http://redis.io/commands/zrangeByScoreWithScores
      */
@@ -421,10 +401,6 @@ interface SparkRedis {
      * See http://redis.io/commands/zrangeByScoreWithScores
      */
     zrangeByScoreWithScores(key: string, min: string, max: string): any
-    /**
-     * See http://redis.io/commands/zrangeByScoreWithScores
-     */
-    zrangeByScoreWithScores(key: string, min: number, max: number): any
     /**
      * See http://redis.io/commands/zrangeByScoreWithScores
      */
@@ -448,11 +424,11 @@ interface SparkRedis {
     /**
      * See http://redis.io/commands/zremrangeByScore
      */
-    zremrangeByScore(key: string, start: string, end: string): number
+    zremrangeByScore(key: string, start: number, end: number): number
     /**
      * See http://redis.io/commands/zremrangeByScore
      */
-    zremrangeByScore(key: string, start: number, end: number): number
+    zremrangeByScore(key: string, start: string, end: string): number
     /**
      * See http://redis.io/commands/zrevrange
      */
@@ -460,23 +436,23 @@ interface SparkRedis {
     /**
      * See http://redis.io/commands/zrevrangeByScore
      */
-    zrevrangeByScore(key: string, max: number, min: number, offset: number, count: number): string[]
-    /**
-     * See http://redis.io/commands/zrevrangeByScore
-     */
     zrevrangeByScore(key: string, max: string, min: string, offset: number, count: number): string[]
-    /**
-     * See http://redis.io/commands/zrevrangeByScore
-     */
-    zrevrangeByScore(key: string, max: string, min: string): string[]
     /**
      * See http://redis.io/commands/zrevrangeByScore
      */
     zrevrangeByScore(key: string, max: number, min: number): string[]
     /**
+     * See http://redis.io/commands/zrevrangeByScore
+     */
+    zrevrangeByScore(key: string, max: number, min: number, offset: number, count: number): string[]
+    /**
+     * See http://redis.io/commands/zrevrangeByScore
+     */
+    zrevrangeByScore(key: string, max: string, min: string): string[]
+    /**
      * See http://redis.io/commands/zrevrangeByScoreWithScores
      */
-    zrevrangeByScoreWithScores(key: string, max: string, min: string): any
+    zrevrangeByScoreWithScores(key: string, max: number, min: number, offset: number, count: number): any
     /**
      * See http://redis.io/commands/zrevrangeByScoreWithScores
      */
@@ -488,7 +464,7 @@ interface SparkRedis {
     /**
      * See http://redis.io/commands/zrevrangeByScoreWithScores
      */
-    zrevrangeByScoreWithScores(key: string, max: number, min: number, offset: number, count: number): any
+    zrevrangeByScoreWithScores(key: string, max: string, min: string): any
     /**
      * See http://redis.io/commands/zrevrangeWithScores
      */

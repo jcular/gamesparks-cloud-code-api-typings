@@ -64,13 +64,13 @@ interface SparkMatchConfig {
     getThresholds(): List
     /**
      * Creates a new pending match containing the given players.
-     * Any existing pending matches for these players with the same matchGroup will be canceled.
+     * Any existing pending matches for these players with the same matchGroup will be cancelled.
      * @validity All Scripts
      */
     createPendingMatch(matchGroup: string, skill: number, players: SparkPlayer[]): PendingMatch
     /**
      * Creates a new pending match containing the given players.
-     * Any existing pending matches for these players with the same matchGroup will be canceled.
+     * Any existing pending matches for these players with the same matchGroup will be cancelled.
      * @validity All Scripts
      */
     createPendingMatchWithCustomQuery(matchGroup: string, skill: number, customQuery: any, matchData: any, players: SparkPlayer[]): PendingMatch

@@ -302,6 +302,14 @@ interface Spark {
      */
     dismissMessage(messageId: string): boolean
     /**
+     * Gets a runtime collection by name, this collection has bot read and write access and can be interacted with using SparkMongoCollectionReadOnly and SparkMongoCollectionReadWrite methods.
+     * @validity All Scripts
+     * @param collectionName the name of the collection you wish to access
+     * @example
+     * var myRuntimeCollection = Spark.runtimeCollection("runtimetest");
+     */
+    runtimeCollection(collectionName: string): SparkMongoCollectionReadWrite
+    /**
      * Gets a metadata collection by name, this collection is read only and can be queried using the methods defined in the SparkMongoCollectionReadOnly object.
      * @validity All Scripts
      * @param collectionName the name of the collection you wish to access
@@ -485,13 +493,6 @@ interface Spark {
      * var util = Spark.getUploadableUtils();
      */
     getUploadableUtils(): SparkUploadableUtils
-    /**
-     * Returns the Game Data Service
-     * @validity All Scripts
-     * @example
-     * var api = Spark.getGameDataService();
-     */
-    getGameDataService(): SparkGameDataService
     /**
      * Terminates execution of the current script
      * @example
