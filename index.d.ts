@@ -1,4 +1,5 @@
 /// <reference path="./typings/Cloud Data/SparkCache.d.ts" />
+/// <reference path="./typings/Cloud Data/SparkDataCursor.d.ts" />
 /// <reference path="./typings/Cloud Data/SparkFiles.d.ts" />
 /// <reference path="./typings/Cloud Data/SparkMongoCollectionReadOnly.d.ts" />
 /// <reference path="./typings/Cloud Data/SparkMongoCollectionReadWrite.d.ts" />
@@ -16,6 +17,18 @@
 /// <reference path="./typings/Configuration/SparkSegmentValue.d.ts" />
 /// <reference path="./typings/Configuration/SparkTeamType.d.ts" />
 /// <reference path="./typings/Configuration/SparkVirtualGood.d.ts" />
+/// <reference path="./typings/data/SparkDataCondition.d.ts" />
+/// <reference path="./typings/data/SparkDataDeleteResult.d.ts" />
+/// <reference path="./typings/data/SparkDataGetResult.d.ts" />
+/// <reference path="./typings/data/SparkDataItem.d.ts" />
+/// <reference path="./typings/data/SparkDataItemPersistor.d.ts" />
+/// <reference path="./typings/data/SparkDataNumberOperand.d.ts" />
+/// <reference path="./typings/data/SparkDataPersistResult.d.ts" />
+/// <reference path="./typings/data/SparkDataQueryResult.d.ts" />
+/// <reference path="./typings/data/SparkDataResult.d.ts" />
+/// <reference path="./typings/data/SparkDataSortOrder.d.ts" />
+/// <reference path="./typings/data/SparkDataStringOperand.d.ts" />
+/// <reference path="./typings/Helper/ChatMessage.d.ts" />
 /// <reference path="./typings/Integrations/SendGrid.d.ts" />
 /// <reference path="./typings/Integrations/SparkHttp.d.ts" />
 /// <reference path="./typings/Integrations/SparkHttpResponse.d.ts" />
@@ -40,7 +53,9 @@
 /// <reference path="./typings/Player/SparkTeam.d.ts" />
 /// <reference path="./typings/Player/SparkTeams.d.ts" />
 /// <reference path="./typings/Spark.d.ts" />
+/// <reference path="./typings/Spark/SparkMatchedPlayer.d.ts" />
 /// <reference path="./typings/SparkCloudCode.d.ts" />
+/// <reference path="./typings/SparkGameDataService.d.ts" />
 /// <reference path="./typings/Utilities/SparkBulkJob.d.ts" />
 /// <reference path="./typings/Utilities/SparkBulkScheduler.d.ts" />
 /// <reference path="./typings/Utilities/SparkDigest.d.ts" />

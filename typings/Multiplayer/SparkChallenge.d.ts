@@ -119,6 +119,10 @@ interface SparkChallenge {
      */
     removePlayer(playerId: string): boolean
     /**
+     * Gets the challenge name
+     */
+    getChallengeName(): string
+    /**
      * Gets the value from a name value pair structure that allows custom data to be attached to this object. This data can either be complex JSON or simple values.
      * @param name The name in the name value pair
      * @returns a JSON object

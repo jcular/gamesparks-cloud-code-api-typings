@@ -117,7 +117,7 @@ interface SparkLeaderboards {
      */
     getSocialChallengeLeaderboard(challengeInstanceId: string, friendsIds: string[]): SparkLeaderboard
     /**
-     * Performs a union on the set of owners of entries within the first leaderboard and the set of owners of entries within the second.
+     * Performs a union on the set of owners returned as result of evaluating the first operation and the set of owners returned as result of evaluating the second operation.
      * Returns a SparkLeaderboardOperations object to allow further operations to be chained before evaluation.
      * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
      * @validity All Scripts
@@ -126,7 +126,7 @@ interface SparkLeaderboards {
      * @example
      * var inAny = Spark.getLeaderboards().union(lhs, rhs).evaluate();
      */
-    union(lhs: SparkLeaderboard, rhs: SparkLeaderboard): SparkLeaderboardOperations
+    union(lhs: SparkLeaderboardOperations, rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
     /**
      * Performs a union on the set of owners returned as result of evaluating the operation and the owners of entries within the leaderboard.
      * Returns a SparkLeaderboardOperations object to allow further operations to be chained before evaluation.
@@ -150,7 +150,7 @@ interface SparkLeaderboards {
      */
     union(lhs: SparkLeaderboard, rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
     /**
-     * Performs a union on the set of owners returned as result of evaluating the first operation and the set of owners returned as result of evaluating the second operation.
+     * Performs a union on the set of owners of entries within the first leaderboard and the set of owners of entries within the second.
      * Returns a SparkLeaderboardOperations object to allow further operations to be chained before evaluation.
      * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
      * @validity All Scripts
@@ -159,7 +159,7 @@ interface SparkLeaderboards {
      * @example
      * var inAny = Spark.getLeaderboards().union(lhs, rhs).evaluate();
      */
-    union(lhs: SparkLeaderboardOperations, rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
+    union(lhs: SparkLeaderboard, rhs: SparkLeaderboard): SparkLeaderboardOperations
     /**
      * Allows a script to load a social SparkLeaderboard for a specific challenge for the current player, where the social group excludes the players with the given playerIds.
      * If no playerIds are provided the player's game friends are used.
@@ -222,17 +222,6 @@ interface SparkLeaderboards {
      */
     intersection(lhs: SparkLeaderboardOperations, rhs: SparkLeaderboard): SparkLeaderboardOperations
     /**
-     * Performs an intersection on the set of owners of entries within the leaderboard and the set of owners returned as result of evaluating the operation.
-     * Returns a SparkLeaderboardOperations object to allow further operations to be chained before evaluation.
-     * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
-     * @validity All Scripts
-     * @param lhs the left-hand side of the operation.
-     * @param rhs the the right-hand side of the operation.
-     * @example
-     * var inBoth = Spark.getLeaderboards().intersection(lhs, rhs).evaluate();
-     */
-    intersection(lhs: SparkLeaderboard, rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
-    /**
      * Performs an intersection on the set of owners returned as result of evaluating the first operation and the set of owners returned as result of evaluating the second operation.
      * Returns a SparkLeaderboardOperations object to allow further operations to be chained before evaluation.
      * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
@@ -243,6 +232,17 @@ interface SparkLeaderboards {
      * var inBoth = Spark.getLeaderboards().intersection(lhs, rhs).evaluate();
      */
     intersection(lhs: SparkLeaderboardOperations, rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
+    /**
+     * Performs an intersection on the set of owners of entries within the leaderboard and the set of owners returned as result of evaluating the operation.
+     * Returns a SparkLeaderboardOperations object to allow further operations to be chained before evaluation.
+     * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
+     * @validity All Scripts
+     * @param lhs the left-hand side of the operation.
+     * @param rhs the the right-hand side of the operation.
+     * @example
+     * var inBoth = Spark.getLeaderboards().intersection(lhs, rhs).evaluate();
+     */
+    intersection(lhs: SparkLeaderboard, rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
     /**
      * Performs an intersection on the set of owners of entries within the first leaderboard and the set of owners of entries within the second.
      * Returns a SparkLeaderboardOperations object to allow further operations to be chained before evaluation.
@@ -275,28 +275,6 @@ interface SparkLeaderboards {
      */
     getInverseTeamChallengeLeaderboardAs(challengeInstanceId: string, playerId: string, teamIds: string[]): SparkLeaderboard
     /**
-     * Performs a difference on the set of owners of entries within the first leaderboard and the set of owners of entries within the second.
-     * Returns a SparkLeaderboardOperations object to allow further operations to be chained before evaluation.
-     * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
-     * @validity All Scripts
-     * @param lhs the left-hand side of the operation.
-     * @param rhs the the right-hand side of the operation.
-     * @example
-     * var onlyInFirst = Spark.getLeaderboards().difference(lhs, rhs).evaluate();
-     */
-    difference(lhs: SparkLeaderboard, rhs: SparkLeaderboard): SparkLeaderboardOperations
-    /**
-     * Performs a difference on the set of owners of entries within the leaderboard and the set of owners returned as result of evaluating the operation.
-     * Returns a SparkLeaderboardOperations object to allow further operations to be chained before evaluation.
-     * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
-     * @validity All Scripts
-     * @param lhs the left-hand side of the operation.
-     * @param rhs the the right-hand side of the operation.
-     * @example
-     * var onlyInFirst = Spark.getLeaderboards().difference(lhs, rhs).evaluate();
-     */
-    difference(lhs: SparkLeaderboard, rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
-    /**
      * Performs a difference on the set of owners returned as result of evaluating the operation and the owners of entries within the leaderboard.
      * Returns a SparkLeaderboardOperations object to allow further operations to be chained before evaluation.
      * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
@@ -318,4 +296,26 @@ interface SparkLeaderboards {
      * var onlyInFirst = Spark.getLeaderboards().difference(lhs, rhs).evaluate();
      */
     difference(lhs: SparkLeaderboardOperations, rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
+    /**
+     * Performs a difference on the set of owners of entries within the leaderboard and the set of owners returned as result of evaluating the operation.
+     * Returns a SparkLeaderboardOperations object to allow further operations to be chained before evaluation.
+     * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
+     * @validity All Scripts
+     * @param lhs the left-hand side of the operation.
+     * @param rhs the the right-hand side of the operation.
+     * @example
+     * var onlyInFirst = Spark.getLeaderboards().difference(lhs, rhs).evaluate();
+     */
+    difference(lhs: SparkLeaderboard, rhs: SparkLeaderboardOperations): SparkLeaderboardOperations
+    /**
+     * Performs a difference on the set of owners of entries within the first leaderboard and the set of owners of entries within the second.
+     * Returns a SparkLeaderboardOperations object to allow further operations to be chained before evaluation.
+     * To obtain the result of the operation call evaluate() on the SparkLeaderboardOperations returned.
+     * @validity All Scripts
+     * @param lhs the left-hand side of the operation.
+     * @param rhs the the right-hand side of the operation.
+     * @example
+     * var onlyInFirst = Spark.getLeaderboards().difference(lhs, rhs).evaluate();
+     */
+    difference(lhs: SparkLeaderboard, rhs: SparkLeaderboard): SparkLeaderboardOperations
 }

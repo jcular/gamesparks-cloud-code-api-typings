@@ -215,12 +215,6 @@ interface SparkMongoCollectionReadWrite {
      */
     remove(query: any): boolean
     /**
-     * Drop the collection
-     * @example
-     * myRuntimeCollection.drop();
-     */
-    drop(): void
-    /**
      * Calls update(query, update, upsert, multi) with upsert=false and multi=false
      * @param query query (document) The selection criteria for the update. Use the same query selectors as used in the find() method
      * @param update update (document) The modifications to apply. For details see Update Parameter

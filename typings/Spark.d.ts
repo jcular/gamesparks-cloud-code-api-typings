@@ -123,47 +123,6 @@ interface Spark {
      */
     message(extCode: string): SparkMessage
     /**
-     * Saves a document to the named collection.
-     * @validity All Scripts
-     * @param collectionName the collection name to save the document to.
-     * @param document the document to save. If the document contains and _id field, and the collection already contains a document with the same _id it will be updated.
-     * @returns true if the save was successful, false if there was an error
-     * @example
-     * Spark.save("myCollection", {"key":"value"});
-     */
-    save(collectionName: string, document: any): boolean
-    /**
-     * Removes a document or documents from the named collection based on the query.
-     * @validity All Scripts
-     * @param collectionName the collection name to remove the document from.
-     * @param query the query that determines what documents to remove
-     * @returns true if the save was successful, false if there was an error
-     * @example
-     * Spark.remove("myCollection", {"key":"value"});
-     */
-    remove(collectionName: string, query: any): boolean
-    /**
-     * Performs a query on the named collection using find (without a projection).
-     * @validity All Scripts
-     * @param collectionName the collection to query
-     * @param query the mongo query. For details see http://docs.mongodb.org/manual/core/read-operations/
-     * @returns The result of the query, can be a simple document or a list
-     * @example
-     * Spark.find("myCollection", {"key":"value"});
-     */
-    find(collectionName: string, query: any): any
-    /**
-     * Performs a query on the named collection using find (with a projection)
-     * @validity All Scripts
-     * @param collectionName the collection to query
-     * @param query the mongo query. For details see http://docs.mongodb.org/manual/core/read-operations/
-     * @param projection the projection,
-     * @returns The result of the query, can be a simple document or a list
-     * @example
-     * Spark.find("myCollection", {"key":"value"}, {"projectionKey":"projectionValue"});
-     */
-    find(collectionName: string, query: any, projection: any): any
-    /**
      * Locks a challenge for writing. Whilst the script 'owns' this lock no other script can modify the challenge
      * Useful for situations where there may be concurrent access required to a SparkChallengeObject.
      * Other scripts can continue to read the Challenge
@@ -292,6 +251,15 @@ interface Spark {
      */
     getHttp(url: string): SparkHttp
     /**
+     * Provides access to a SparkHttp interface
+     * @validity All Scripts
+     * @param url the URL of the service to connect to
+     * @param timeout (Optional) the max time in milliseconds to wait for the response, if null the system default will be used.
+     * @example
+     * var httpSender = Spark.getHttp();
+     */
+    getHttp(url: string, timeout: number): SparkHttp
+    /**
      * Allows a script to dismiss a given message. 
      * Returns true if a message was dismissed. This method does not check if the message belongs to the current user.
      * @validity All Scripts
@@ -301,14 +269,6 @@ interface Spark {
      * Spark.dismissMessage("528b3411e4b09c9ee8497949");
      */
     dismissMessage(messageId: string): boolean
-    /**
-     * Gets a runtime collection by name, this collection has bot read and write access and can be interacted with using SparkMongoCollectionReadOnly and SparkMongoCollectionReadWrite methods.
-     * @validity All Scripts
-     * @param collectionName the name of the collection you wish to access
-     * @example
-     * var myRuntimeCollection = Spark.runtimeCollection("runtimetest");
-     */
-    runtimeCollection(collectionName: string): SparkMongoCollectionReadWrite
     /**
      * Gets a metadata collection by name, this collection is read only and can be queried using the methods defined in the SparkMongoCollectionReadOnly object.
      * @validity All Scripts
@@ -493,6 +453,13 @@ interface Spark {
      * var util = Spark.getUploadableUtils();
      */
     getUploadableUtils(): SparkUploadableUtils
+    /**
+     * Returns the Game Data Service
+     * @validity All Scripts
+     * @example
+     * var api = Spark.getGameDataService();
+     */
+    getGameDataService(): SparkGameDataService
     /**
      * Terminates execution of the current script
      * @example

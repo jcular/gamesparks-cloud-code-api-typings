@@ -58,4 +58,9 @@ interface SparkAchievement {
      * @validity All Scripts
      */
     getVirtualGoodAward(): SparkVirtualGood
+    /**
+     * Returns the currency awards map associated with this achievement
+     * @validity All Scripts
+     */
+    getCurrencyAwards(): any
 }

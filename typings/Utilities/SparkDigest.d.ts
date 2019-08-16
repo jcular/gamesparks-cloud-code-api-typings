@@ -1,5 +1,6 @@
 /**
  * Returns a reference to a SparkDigest object.
+ * Implements a number of hashing functions similar to those found in CryptoJS.
  * example
  * Spark.getDigester();
  */
@@ -9,23 +10,39 @@ interface SparkDigest {
      */
     hmacMd5Base64(key: string, valueToDigest: string): string
     /**
+     * Returns a HmacMD5 Message Authentication Code (MAC) as a base64 encoded string for the given base64 encoded key and value.
+     */
+    hmacMd5Base64WithBase64Key(key: string, valueToDigest: string): string
+    /**
      * Returns a HmacMD5 Message Authentication Code (MAC) as a hex string (lowercase) for the given key and value.
      */
     hmacMd5Hex(key: string, valueToDigest: string): string
+    /**
+     * Returns a HmacMD5 Message Authentication Code (MAC) as a hex string (lowercase) for the given hex encoded key and value.
+     */
+    hmacMd5HexWithHexKey(key: string, valueToDigest: string): string
     /**
      * Returns a HmacSHA1 Message Authentication Code (MAC) as a base64 encoded string for the given key and value.
      */
     hmacSha1Base64(key: string, valueToDigest: string): string
     /**
+     * Returns a HmacSHA1 Message Authentication Code (MAC) as a base64 encoded string for the given base64 encoded key and value.
+     */
+    hmacSha1Base64WithBase64Key(key: string, valueToDigest: string): string
+    /**
      * Returns a HmacSHA1 Message Authentication Code (MAC) as hex string (lowercase) for the given key and value.
      */
     hmacSha1Hex(key: string, valueToDigest: string): string
+    /**
+     * Returns a HmacSHA1 Message Authentication Code (MAC) as hex string (lowercase) for the given hex encoded key and value.
+     */
+    hmacSha1HexWithHexKey(key: string, valueToDigest: string): string
     /**
      * Returns a HmacSHA256 Message Authentication Code (MAC) as a base64 encoded string for the given key and value.
      */
     hmacSha256Base64(key: string, valueToDigest: string): string
     /**
-     * Returns a HmacSHA256 Message Authentication Code (MAC) using a base64 encoded key and returns the value as a base64 encoded string.
+     * Returns a HmacSHA256 Message Authentication Code (MAC) as a base64 encoded string for the given base64 encoded key and value.
      */
     hmacSha256Base64WithBase64Key(base64Key: string, valueToDigest: string): string
     /**
@@ -33,25 +50,41 @@ interface SparkDigest {
      */
     hmacSha256Hex(key: string, valueToDigest: string): string
     /**
-     * Returns a HmacSHA256 Message Authentication Code (MAC) using a hex encoded key and returns the value as a hex encoded string.
+     * Returns a HmacSHA256 Message Authentication Code (MAC) as hex string (lowercase) for the given hex encoded key and value.
      */
-    hmacSha256HexWithHexKey(hexKey: string, valueToDigest: string): string
+    hmacSha256HexWithHexKey(key: string, valueToDigest: string): string
     /**
      * Returns a HmacSHA384 Message Authentication Code (MAC) as a base64 encoded string for the given key and value.
      */
     hmacSha384Base64(key: string, valueToDigest: string): string
     /**
+     * Returns a HmacSHA384 Message Authentication Code (MAC) as a base64 encoded string for the given base64 encoded key and value.
+     */
+    hmacSha384Base64WithBase64Key(key: string, valueToDigest: string): string
+    /**
      * Returns a HmacSHA384 Message Authentication Code (MAC) as hex string (lowercase) for the given key and value.
      */
     hmacSha384Hex(key: string, valueToDigest: string): string
+    /**
+     * Returns a HmacSHA384 Message Authentication Code (MAC) as hex string (lowercase) for the given hex encoded key and value.
+     */
+    hmacSha384HexWithHexKey(key: string, valueToDigest: string): string
     /**
      * Returns a HmacSHA512 Message Authentication Code (MAC) as a base64 encoded string for the given key and value.
      */
     hmacSha512Base64(key: string, valueToDigest: string): string
     /**
+     * Returns a HmacSHA512 Message Authentication Code (MAC) as a base64 encoded string for the given base64 encoded key and value.
+     */
+    hmacSha512Base64WithBase64Key(key: string, valueToDigest: string): string
+    /**
      * Returns a HmacSHA512 Message Authentication Code (MAC) as hex string (lowercase) for the given key and value.
      */
     hmacSha512Hex(key: string, valueToDigest: string): string
+    /**
+     * Returns a HmacSHA512 Message Authentication Code (MAC) as hex string (lowercase) for the given hex encoded key and value.
+     */
+    hmacSha512HexWithHexKey(key: string, valueToDigest: string): string
     /**
      * Calculates the MD2 digest and returns the value as a a base64 encoded string.
      */

@@ -113,4 +113,9 @@ interface SparkVirtualGood {
      * @validity All Scripts
      */
     getPropertySet(): any
+    /**
+     * Returns the currency cost map associated with this virtual good
+     * @validity All Scripts
+     */
+    getCurrencyCosts(): any
 }

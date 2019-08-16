@@ -7,6 +7,12 @@
  */
 interface SparkPlayer {
     /**
+     * Returns a map of the player's balance for each currency type.
+     * @example
+     * var allBalances = Spark.getPlayer().getAllCurrencies();
+     */
+    getAllBalances(): any
+    /**
      * Gets the display name of the player.
      * This may be null for a player who has only used device authentication. Other authentication mechanisms will return a value.
      * @example
@@ -35,18 +41,18 @@ interface SparkPlayer {
     /**
      * Credits the currency1 balance of the player with the amount specified.
      * @param quantity the amount to credit
+     * @example
+     * Spark.getPlayer().credit1(20);
+     */
+    credit1(quantity: number): void
+    /**
+     * Credits the currency1 balance of the player with the amount specified.
+     * @param quantity the amount to credit
      * @param reason the reason for the credit
      * @example
      * Spark.getPlayer().credit1(20, "Loyalty Bonus");
      */
     credit1(quantity: number, reason: string): void
-    /**
-     * Credits the currency1 balance of the player with the amount specified.
-     * @param quantity the amount to credit
-     * @example
-     * Spark.getPlayer().credit1(20);
-     */
-    credit1(quantity: number): void
     /**
      * Debits the currency1 balance of the player with the amount specified.
      * @param quantity the amount to debit
@@ -131,18 +137,18 @@ interface SparkPlayer {
     /**
      * Credits the currency4 balance of the player with the amount specified.
      * @param quantity the amount to credit
+     * @example
+     * Spark.getPlayer().credit4(20);
+     */
+    credit4(quantity: number): void
+    /**
+     * Credits the currency4 balance of the player with the amount specified.
+     * @param quantity the amount to credit
      * @param reason the reason for the credit
      * @example
      * Spark.getPlayer().credit4(20, "Loyalty Bonus");
      */
     credit4(quantity: number, reason: string): void
-    /**
-     * Credits the currency4 balance of the player with the amount specified.
-     * @param quantity the amount to credit
-     * @example
-     * Spark.getPlayer().credit4(20);
-     */
-    credit4(quantity: number): void
     /**
      * Debits the currency4 balance of the player with the amount specified.
      * Returns true if the debit was successful, false if the current balance was not sufficient.
@@ -195,26 +201,18 @@ interface SparkPlayer {
     /**
      * Credits the currency6 balance of the player with the amount specified.
      * @param quantity the amount to credit
-     * @example
-     * Spark.getPlayer().credit6(20);
-     */
-    credit6(quantity: number): void
-    /**
-     * Credits the currency6 balance of the player with the amount specified.
-     * @param quantity the amount to credit
      * @param reason the reason for the credit
      * @example
      * Spark.getPlayer().credit6(20, "Loyalty Bonus");
      */
     credit6(quantity: number, reason: string): void
     /**
-     * Debits the currency6 balance of the player with the amount specified.
-     * Returns true if the debit was successful, false if the current balance was not sufficient.
-     * @param quantity the amount to debit
+     * Credits the currency6 balance of the player with the amount specified.
+     * @param quantity the amount to credit
      * @example
-     * Spark.getPlayer().debit6(5);
+     * Spark.getPlayer().credit6(20);
      */
-    debit6(quantity: number): boolean
+    credit6(quantity: number): void
     /**
      * Debits the currency6 balance of the player with the amount specified.
      * Returns true if the debit was successful, false if the current balance was not sufficient.
@@ -224,6 +222,14 @@ interface SparkPlayer {
      * Spark.getPlayer().debit6(5, "Loser Penalty");
      */
     debit6(quantity: number, reason: string): boolean
+    /**
+     * Debits the currency6 balance of the player with the amount specified.
+     * Returns true if the debit was successful, false if the current balance was not sufficient.
+     * @param quantity the amount to debit
+     * @example
+     * Spark.getPlayer().debit6(5);
+     */
+    debit6(quantity: number): boolean
     /**
      * Gets the currency1 balance of the player.
      * @example
@@ -235,20 +241,20 @@ interface SparkPlayer {
      * Returns true if the debit was successful, false if the current balance was not sufficient.
      * @param shortCode the shortCode of the named currency to debit
      * @param quantity the amount to debit
-     * @example
-     * Spark.getPlayer().debit("GOLD", 5);
-     */
-    debit(shortCode: string, quantity: number): boolean
-    /**
-     * Debits the named currency balance of the player with the amount specified.
-     * Returns true if the debit was successful, false if the current balance was not sufficient.
-     * @param shortCode the shortCode of the named currency to debit
-     * @param quantity the amount to debit
      * @param reason the reason for the debit
      * @example
      * Spark.getPlayer().debit("GOLD", 5, "Loser Penalty");
      */
     debit(shortCode: string, quantity: number, reason: string): boolean
+    /**
+     * Debits the named currency balance of the player with the amount specified.
+     * Returns true if the debit was successful, false if the current balance was not sufficient.
+     * @param shortCode the shortCode of the named currency to debit
+     * @param quantity the amount to debit
+     * @example
+     * Spark.getPlayer().debit("GOLD", 5);
+     */
+    debit(shortCode: string, quantity: number): boolean
     /**
      * Gets the currency2 balance of the player.
      * @example
@@ -327,20 +333,20 @@ interface SparkPlayer {
      * Returns true if the player had enough of the virtual good specified by short code. If the method returns false, no modification is made.
      * @param shortCode the virtual good's short code
      * @param quantity the amount to consume
-     * @example
-     * var goodsUsed = Spark.getPlayer().useVGood(vgShortCode, 34);
-     */
-    useVGood(shortCode: string, quantity: number): boolean
-    /**
-     * Removes a quantity of virtual goods from the player.
-     * Returns true if the player had enough of the virtual good specified by short code. If the method returns false, no modification is made.
-     * @param shortCode the virtual good's short code
-     * @param quantity the amount to consume
      * @param reason the reason for using the virtual good
      * @example
      * var goodsUsed = Spark.getPlayer().useVGood(vgShortCode, 34, "Loser penalty");
      */
     useVGood(shortCode: string, quantity: number, reason: string): boolean
+    /**
+     * Removes a quantity of virtual goods from the player.
+     * Returns true if the player had enough of the virtual good specified by short code. If the method returns false, no modification is made.
+     * @param shortCode the virtual good's short code
+     * @param quantity the amount to consume
+     * @example
+     * var goodsUsed = Spark.getPlayer().useVGood(vgShortCode, 34);
+     */
+    useVGood(shortCode: string, quantity: number): boolean
     /**
      * Determines whether the player has a particular virtual good.
      * Returns the quantity of the virtual good the player has.
