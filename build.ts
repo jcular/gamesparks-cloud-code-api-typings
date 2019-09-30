@@ -186,10 +186,10 @@ async function build() {
 		}
 		handleData(c);
 	}
-	wirteIndexDts();
+	wirteReferencesDts();
 }
-function wirteIndexDts() {
-	const path = "./index.d.ts";
+function wirteReferencesDts() {
+	const path = "./references.d.ts";
 	glob(outPath + "**/*.d.ts", (err, files) => {
 		let index = "";
 		files.forEach(file => {
