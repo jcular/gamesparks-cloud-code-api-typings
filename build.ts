@@ -192,9 +192,9 @@ function wirteReferencesDts() {
 	const path = "./references.d.ts";
 	glob(outPath + "**/*.d.ts", (err, files) => {
 		let index = "";
-		files.forEach(file => {
+		for (const file of files) {
 			index += "/// <reference path=\"[file_path]\" />\n".replace("[file_path]", file);
-		});
+		}
 		fs.writeFileSync(path, index);
 	});
 	console.log(path);
@@ -222,12 +222,12 @@ function handleData(data: IClassInfo) {
 			if (signature.validity) {
 				signature.descriptions.push("@validity " + signature.validity);
 			}
-			signature.params.forEach(param => {
+			for (const param of signature.params) {
 				signature.descriptions.push("@param " + param.name + " " + param.descriptions[0]);
 				for (let j = 1; j < param.descriptions.length; j++) {
 					signature.descriptions.push(param.descriptions[j]);
 				}
-			});
+			}
 			if (signature.returnsDescription) {
 				signature.descriptions.push("@returns " + signature.returnsDescription);
 			}
