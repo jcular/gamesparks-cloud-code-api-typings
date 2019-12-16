@@ -1,4 +1,5 @@
 /// <reference path="./references.d.ts" />
+/// <reference path="./patches.ts" />
 
 declare type date = any;
 declare type XMLObject = any;
